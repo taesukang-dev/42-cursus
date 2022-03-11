@@ -1,19 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/11 19:21:12 by tkang             #+#    #+#             */
+/*   Updated: 2022/03/11 19:22:43 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
-#include <ctype.h>
 
-/*
-int ft_isascii(char c)
+int	ft_isascii(int c)
 {
-
-}
-*/
-
-int main()
-{
-	int a = 256;
-	int b = 256;
-	printf("%d", isascii(a));
-
-	return 0;
+	if (0 <= c && c <= 127)
+		return (1);
+	else
+		return (0);
 }
