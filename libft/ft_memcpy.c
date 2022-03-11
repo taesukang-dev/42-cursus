@@ -1,28 +1,14 @@
 #include "libft.h"
 
-/*
-void	*memcpy(void *dest, const void *src, size_t num)
+void	*ft_memcpy(void *dest, const void *src, size_t num)
 {
-	
+	size_t	i;
 
-}
-
-int main()
-{
-
-	return 0;
-}
-*/
-
-void test(int *restrict a, int *restrict b, int *restrict x)
-{
-	*a += *x;
-	*b += *x;
-}
-
-int main()
-{
-	int a = 1;
-	test(&a, &a, &a);
-	printf("%d", a);
+	i = 0;
+	while(i < num)
+	{
+		((char *)dest)[i] = ((char *)src)[i];
+		i++;
+	}
+	return (dest);
 }
