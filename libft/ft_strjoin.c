@@ -1,6 +1,5 @@
 #include "libft.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 int ft_strlen(char const *s)
 {
@@ -40,11 +39,3 @@ char *ft_strjoin(char const *s1, char const *s2)
     return temp;
 }
 
-int main()
-{
-    char *temp2;
-    temp2 = malloc(sizeof(char) * 7);
-    temp2 = ft_strjoin("asd", "efg");
-    printf("%s", temp2);
-    return 0;
-}
