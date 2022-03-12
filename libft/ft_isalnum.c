@@ -6,7 +6,7 @@
 /*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 16:42:38 by tkang             #+#    #+#             */
-/*   Updated: 2022/03/11 16:46:16 by tkang            ###   ########.fr       */
+/*   Updated: 2022/03/12 19:41:48 by tkang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int	ft_isalnum(int c)
 {
-	if ('a' <= c && c <= 'z' || 'A' <= c && c <= 'Z' || '0' <= c && c <= '9')
-	{
+	if (ft_isalpha(c) || ft_isdigit(c))
 		return (1);
-	}
-	return (0);
+	else
+		return (0);
 }
