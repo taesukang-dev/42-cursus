@@ -33,9 +33,6 @@ all: $(NAME)
 $(NAME) : $(OBJS)
 	ar rc $@ $?
 
-%.o : %.c
-	$(CC) $(CFLAGS) -c $<
-
 clean:
 	rm -f $(OBJS)
 
