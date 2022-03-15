@@ -19,7 +19,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	buf = ft_calloc(len + 1, sizeof(char));
+	buf = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!buf)
 		return (NULL);
 	i = 0;
