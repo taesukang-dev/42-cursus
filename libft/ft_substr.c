@@ -17,7 +17,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	char	*buf;
 
+	if (!s)
+		return (NULL);
 	buf = ft_calloc(len + 1, sizeof(char));
+	if (!buf)
+		return (NULL);
 	i = 0;
 	while (s[start] && i < len)
 	{
@@ -25,5 +29,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		start++;
 		i++;
 	}
+	buf[i] = '\0';
 	return (buf);
 }
