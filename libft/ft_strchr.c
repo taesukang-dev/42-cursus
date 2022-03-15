@@ -6,7 +6,7 @@
 /*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:55:12 by tkang             #+#    #+#             */
-/*   Updated: 2022/03/14 16:55:12 by tkang            ###   ########.fr       */
+/*   Updated: 2022/03/15 16:59:32 by tkang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s)
+	size_t	i;
+
+	i = 0;
+	while (s[i] != (char)c)
 	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
+		if (s[i] == '\0')
+			return (NULL);
+		i++;
 	}
-	return (NULL);
+	return ((char *)s + i);
 }

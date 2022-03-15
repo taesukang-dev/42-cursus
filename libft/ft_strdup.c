@@ -6,7 +6,7 @@
 /*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 21:42:33 by tkang             #+#    #+#             */
-/*   Updated: 2022/03/14 21:42:34 by tkang            ###   ########.fr       */
+/*   Updated: 2022/03/15 15:52:42 by tkang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strdup(const char *s1)
 	size_t	i;
 
 	s1_len = ft_strlen(s1);
-	ptr = (char *)malloc(sizeof(char) * s1_len);
+	ptr = (char *)malloc(sizeof(char) * s1_len + 1);
 	if (!ptr)
 		return (NULL);
 	i = 0;
