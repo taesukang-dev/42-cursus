@@ -6,7 +6,7 @@
 /*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:23:43 by tkang             #+#    #+#             */
-/*   Updated: 2022/03/16 18:24:35 by tkang            ###   ########.fr       */
+/*   Updated: 2022/03/18 19:40:33 by tkang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	**ft_split(char const *s, char c)
 	size_t	idx;
 	char	*temp;
 
-	buf = (char **)malloc(sizeof(char *) * check_size(s, c) + 1);
+	buf = (char **)malloc(sizeof(char *) * (check_size(s, c) + 1));
 	if (!buf)
 		return (NULL);
 	idx = 0;
@@ -49,14 +49,14 @@ char	**ft_split(char const *s, char c)
 		{
 			temp = (char *)s;
 			while (*s && *s != c)
-				++s;
+				s++;
 			buf[idx] = (char *)malloc(sizeof(char) * (s - temp) + 1);
 			ft_strlcpy(buf[idx], temp, (size_t)(s - temp) + 1);
 			idx++;
 		}
 		else
-			++s;
+			s++;
 	}
-	buf[idx] = 0;
+	buf[idx] = NULL;
 	return (buf);
 }

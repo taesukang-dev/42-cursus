@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 17:31:33 by tkang             #+#    #+#             */
-/*   Updated: 2022/03/18 17:18:47 by tkang            ###   ########.fr       */
+/*   Created: 2022/03/18 15:53:44 by tkang             #+#    #+#             */
+/*   Updated: 2022/03/18 15:53:45 by tkang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
-	size_t	s1_len;
-	char	*buf;
+	unsigned int	i;
+	unsigned int	s_len;
+	char			*buf;
 
-	if (!s1)
+	if (!s || !f)
 		return (NULL);
-	if (!set)
-		return (ft_strdup(s1));
+	s_len = ft_strlen(s);
+	buf = (char *)malloc(sizeof(char) * s_len + 1);
+	if (!buf)
+		return (NULL);
 	i = 0;
-	s1_len = ft_strlen(s1) - 1;
-	while (s1[i] && ft_strchr(set, s1[i]))
+	while (s[i])
+	{
+		buf[i] = f(i, s[i]);
 		i++;
-	while (s1[s1_len] && ft_strchr(set, s1[s1_len]) && s1_len > i)
-		s1_len--;
-	buf = (char *)calloc(s1_len - i + 2, sizeof(char));
-	if (buf)
-		ft_strlcpy(buf, (s1 + i), s1_len - i + 2);
+	}
+	buf[i] = '\0';
 	return (buf);
 }
