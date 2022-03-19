@@ -13,3 +13,5 @@
 <br>
 
 ## Struct
+
+<a href="https://liltdevs.tistory.com/69">struct</a>
