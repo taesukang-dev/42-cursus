@@ -15,8 +15,8 @@
 int	ft_atoi(const char *str)
 {
 	size_t	i;
-	int		result;
-	int		op;
+	long	result;
+	long	op;
 
 	i = 0;
 	result = 0;
@@ -25,17 +25,18 @@ int	ft_atoi(const char *str)
 		return (0);
 	while ((9 <= str[i] && str[i] <= 13) || str[i] == ' ')
 		i++;
-	if (str[i] == '+')
+	if (str[i] == '-')
+		op = -1;
+	if (str[i] == '-' || str[i] == '+')
 		i++;
-	else if (str[i] == '-')
-	{
-		op *= -1;
-		i++;
-	}
 	while ('0' <= str[i] && str[i] <= '9')
 	{
 		result *= 10;
 		result += str[i] - '0';
+		if (result > 2147483647 && op == 1)
+			return (-1);
+		if (result > 2147483648 && op == -1)
+			return (0);
 		i++;
 	}
 	return (result * op);
