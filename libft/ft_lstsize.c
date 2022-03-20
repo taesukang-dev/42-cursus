@@ -6,7 +6,7 @@
 /*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 21:14:05 by tkang             #+#    #+#             */
-/*   Updated: 2022/03/18 21:14:07 by tkang            ###   ########.fr       */
+/*   Updated: 2022/03/20 20:09:59 by tkang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int	i;
+	size_t	i;
 
 	if (!lst)
-		return (NULL);
+		return (0);
 	i = 0;
-	while (lst->next)
+	while (lst)
+	{
+		lst = lst->next;
 		i++;
+	}
 	return (i);
 }

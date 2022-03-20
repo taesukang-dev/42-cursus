@@ -6,7 +6,7 @@
 /*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:40:25 by tkang             #+#    #+#             */
-/*   Updated: 2022/03/18 16:40:26 by tkang            ###   ########.fr       */
+/*   Updated: 2022/03/20 21:35:14 by tkang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,19 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*i;
-
 	if (fd < 0)
 		return ;
-	i = ft_itoa(n);
-	ft_putstr_fd(i, fd);
+	if (n == -2147483648)
+	{
+		ft_putstr_fd("-2147483648", fd);
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n *= -1;
+	}
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	ft_putchar_fd((n % 10) + '0', fd);
 }

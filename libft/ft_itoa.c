@@ -6,7 +6,7 @@
 /*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:40:58 by tkang             #+#    #+#             */
-/*   Updated: 2022/03/18 20:49:25 by tkang            ###   ########.fr       */
+/*   Updated: 2022/03/20 20:49:25 by tkang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -16,6 +16,8 @@ size_t	check_len(int n)
 	size_t	i;
 
 	i = 0;
+	if (n < 0)
+		i = 1;
 	if (n == -2147483648)
 		return (10);
 	else if (n < 0)
@@ -37,17 +39,17 @@ char	*ft_itoa(int n)
 		return (ft_strdup("-2147483648"));
 	else if (n == 0 || n == -0)
 		return (ft_strdup("0"));
-	len = check_len(n) - 1;
-	buf = malloc(sizeof(char) * (len + 3));
+	len = check_len(n);
+	buf = malloc(sizeof(char) * (len + 1));
 	if (!buf)
 		return (NULL);
 	if (n < 0)
 	{
 		buf[0] = '-';
-		len += 1;
 		n *= -1;
 	}
-	buf[len + 1] = '\0';
+	buf[len] = '\0';
+	len -= 1;
 	while (n > 0)
 	{
 		buf[len] = "0123456789"[n % 10];
