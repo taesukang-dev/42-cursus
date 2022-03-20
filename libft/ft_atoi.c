@@ -31,12 +31,12 @@ int	ft_atoi(const char *str)
 		i++;
 	while ('0' <= str[i] && str[i] <= '9')
 	{
-		result *= 10;
-		result += str[i] - '0';
 		if (result > 2147483647 && op == 1)
 			return (-1);
 		if (result > 2147483648 && op == -1)
 			return (0);
+		result *= 10;
+		result += str[i] - '0';
 		i++;
 	}
 	return (result * op);
