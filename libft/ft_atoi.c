@@ -6,7 +6,7 @@
 /*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 21:17:59 by tkang             #+#    #+#             */
-/*   Updated: 2022/03/15 20:29:38 by tkang            ###   ########.fr       */
+/*   Updated: 2022/03/21 16:03:43 by tkang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ int	ft_atoi(const char *str)
 			return (-1);
 		if (result > 2147483648 && op == -1)
 			return (0);
-		result *= 10;
-		result += str[i] - '0';
+		result = (result * 10) + (str[i] - '0');
 		i++;
 	}
 	return (result * op);

@@ -6,14 +6,13 @@
 #    By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/20 19:38:32 by tkang             #+#    #+#              #
-#    Updated: 2022/03/20 20:02:45 by tkang            ###   ########.fr        #
+#    Updated: 2022/03/21 19:19:49 by tkang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
-OBJS = $(SRCS:.c=.o)
 SRCS = ft_atoi.c \
 	   ft_bzero.c \
 	   ft_calloc.c \
@@ -49,8 +48,6 @@ SRCS = ft_atoi.c \
 	   ft_tolower.c \
 	   ft_toupper.c
 
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
-
 BONUS_SRCS = ft_lstnew.c \
 		  ft_lstadd_front.c \
 		  ft_lstsize.c \
@@ -61,16 +58,25 @@ BONUS_SRCS = ft_lstnew.c \
 		  ft_lstiter.c \
 		  ft_lstmap.c
 
+OBJS = $(SRCS:.c=.o)
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+
+ifdef IS_BONUS
+	OBJECTS = $(OBJS) $(BONUS_OBJS)
+else
+	OBJECTS = $(OBJS)
+endif
+
 all: $(NAME)
 
-bonus: $(OBJS) $(BONUS_OBJS)
-	ar rcs $(NAME) $?
-
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJECTS)
 	ar rcs $@ $?
 
+bonus: 
+	make IS_BONUS=1 all
+
 %.o : %.c
-	$(CC) $(CFLAGS) -c $^
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS) $(BONUS_OBJS)
