@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static size_t	check_size(char const *s, char c)
+static size_t	ft_check_size(char const *s, char c)
 {
 	size_t	i;
 	size_t	res;
@@ -33,15 +33,11 @@ static size_t	check_size(char const *s, char c)
 	return (res);
 }
 
-char	**ft_split(char const *s, char c)
+static size_t	ft_map_strs(char const *s, char c, char **buf)
 {
-	char	**buf;
 	size_t	idx;
 	char	*temp;
 
-	buf = (char **)malloc(sizeof(char *) * (check_size(s, c) + 1));
-	if (!buf)
-		return (NULL);
 	idx = 0;
 	while (*s)
 	{
@@ -50,13 +46,41 @@ char	**ft_split(char const *s, char c)
 			temp = (char *)s;
 			while (*s && *s != c)
 				s++;
-			buf[idx] = (char *)malloc(sizeof(char) * (s - temp) + 1);
-			ft_strlcpy(buf[idx], temp, (size_t)(s - temp) + 1);
+			buf[idx] = (char *)malloc(sizeof(char) * ((s - temp) + 1));
+			if (!(buf[idx]))
+				return 0;
+			ft_strlcpy(buf[idx], temp, (size_t)((s - temp) + 1));
 			idx++;
 		}
 		else
 			s++;
 	}
 	buf[idx] = NULL;
+	return (1);
+}
+
+static char	**ft_all_free(char **buf)
+{
+	size_t	i;
+
+	i = 0;
+	while (buf[i])
+	{
+		free(buf[i]);
+		i++;
+	}
+	free(buf);
+	return (NULL);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**buf;
+
+	buf = (char **)malloc(sizeof(char *) * (ft_check_size(s, c) + 1));
+	if (!buf)
+		return (NULL);
+	if(!ft_map_strs(s, c, buf))
+		return ft_all_free(buf);
 	return (buf);
 }

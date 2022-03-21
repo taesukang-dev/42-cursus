@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static size_t	check_len(int n)
+static size_t	ft_check_len(int n)
 {
 	size_t	i;
 
@@ -40,7 +40,7 @@ char	*ft_itoa(int n)
 		return (ft_strdup("-2147483648"));
 	else if (n == 0 || n == -0)
 		return (ft_strdup("0"));
-	len = check_len(n);
+	len = ft_check_len(n);
 	buf = malloc(sizeof(char) * (len + 1));
 	if (!buf)
 		return (NULL);
