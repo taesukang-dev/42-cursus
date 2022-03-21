@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t	check_size(char const *s, char c)
+static size_t	check_size(char const *s, char c)
 {
 	size_t	i;
 	size_t	res;

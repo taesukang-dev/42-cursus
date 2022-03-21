@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t	check_len(int n)
+static size_t	check_len(int n)
 {
 	size_t	i;
 

@@ -28,7 +28,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		i++;
 	while (s1[s1_len] && ft_strchr(set, s1[s1_len]) && s1_len > i)
 		s1_len--;
-	buf = (char *)calloc(s1_len - i + 2, sizeof(char));
+	buf = (char *)ft_calloc(s1_len - i + 2, sizeof(char));
 	if (buf)
 		ft_strlcpy(buf, (s1 + i), s1_len - i + 2);
 	return (buf);
