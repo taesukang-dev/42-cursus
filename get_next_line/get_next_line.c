@@ -8,7 +8,6 @@ char	*get_next_line(int fd)
 	char	c;
 	size_t	i;
 
-	fd = open("./test.txt", O_RDONLY);
 	buf = malloc(sizeof(char) * 42);
 	i = 0;
 	while(read(fd, &c, 1) > 0)
@@ -30,11 +29,11 @@ char	*get_next_line(int fd)
 int main()
 {
 	char	*temp;
-	// int fd = open("./test.txt", O_WRONLY);
-	// if (fd > 0)
-		temp = get_next_line(2);
-	// close(fd);
+	int fd = open("./test.txt", O_RDONLY);
+	if (fd > 0)
+		temp = get_next_line(fd);
+	close(fd);
 	printf("%s", temp);
-	// free(temp);
+	free(temp);
 	return 0;
 }
