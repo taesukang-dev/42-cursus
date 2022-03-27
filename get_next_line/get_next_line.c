@@ -5,45 +5,6 @@
 #include <unistd.h>
 #include <stdio.h>
 
-size_t	ft_strlen(char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while(s[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strjoin(char *s1, char *s2)
-{
-	char	*temp;
-	size_t	s1_len;
-	size_t	s2_len;
-	size_t	i;
-
-	if (!s1 && !s2)
-		return (NULL);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	temp = (char *)malloc(sizeof(char) * (s1_len + s2_len) + 1);
-	i = 0;
-	while(s1[i])
-	{
-		temp[i] = s1[i];
-		i++;
-	}
-	i = 0;
-	while (s2[i])
-	{
-		temp[s1_len] = s2[i];
-		i++;
-		s1_len++;
-	}
-	temp[s1_len] = '\0';
-	return (temp);
-}
-
 void	del_buf(char *s)
 {
 	size_t	i;
@@ -74,9 +35,9 @@ char	*get_one_line(char *s)
 
 char	*get_next_line(int fd)
 {
-	char		*buf = malloc(sizeof(char) * BUFFER_SIZE);
 	char		*temp;
-	static char	*fd_table[OPEN_MAX];
+	static char	*fd_table[OPEN_MAX] = {0, };
+	char		buf[BUFFER_SIZE + 1];
 	
 	temp = malloc(sizeof(char) * BUFFER_SIZE);
 	while (read(fd, buf, BUFFER_SIZE) > 0)
@@ -85,7 +46,6 @@ char	*get_next_line(int fd)
 		del_buf(buf);
 	}
 	fd_table[fd] = temp;
-	printf("fd : %s\n", fd_table[fd]);
 	return get_one_line(fd_table[fd]);
 }
 
@@ -96,10 +56,15 @@ int main()
 	if (fd > 0)
 	{
 		temp = get_next_line(fd);
+		printf("%s", temp);
 		temp = get_next_line(fd);
+		printf("%s", temp);
 		temp = get_next_line(fd);
+		printf("%s", temp);
 		temp = get_next_line(fd);
+		printf("%s", temp);
 		temp = get_next_line(fd);
+		printf("%s", temp);
 	}
 	close(fd);
 	free(temp);
