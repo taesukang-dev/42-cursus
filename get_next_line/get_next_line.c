@@ -8,11 +8,22 @@
 char	*get_one_line(char **s, int nl_pivot)
 {
 	char	*temp;
+	size_t	i;
 	
 	temp = (char *)malloc(sizeof(char) * nl_pivot + 1);
-	while(**s && **s != '\n')
-		*(temp++) = *(*s++);
-	*temp = '\0';
+	i = 0;
+	while((*s)[i] && (*s)[i] != '\n')
+	{
+		temp[i] = (*s)[i];
+		i++;
+	}
+	i = 0;
+	while(i <= nl_pivot)
+	{
+		(*s)++;
+		i++;
+	}
+	temp[i] = '\0';
 	return temp;
 }
 
@@ -23,10 +34,8 @@ int	ft_find_nl(char *s)
 	if (!s)
 		return -1;
 	i = 0;
-	while(s[i] != '\n')
-	{
+	while(s[i] && s[i] != '\n')
 		i++;
-	}
 	if (s[i])
 		return i;
 	return -1;
@@ -45,10 +54,12 @@ char	*get_next_line(int fd)
 		if (nl_pivot >= 0)
 			return get_one_line(&fd_table[fd], nl_pivot);
 		read_len = read(fd, buf, BUFFER_SIZE);
-		if (read_len < 0)
+		if (read_len <= 0)
 			break;
 		buf[read_len] = '\0';
 		fd_table[fd] = ft_strjoin(fd_table[fd], buf);
+		if (!fd_table[fd])
+			return (NULL);
 	}
 	return fd_table[fd];
 }
@@ -71,6 +82,5 @@ int main()
 		printf("%s\n", temp);
 	}
 	close(fd);
-	free(temp);
 	return 0;
 }
