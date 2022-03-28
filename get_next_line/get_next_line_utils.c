@@ -1,4 +1,5 @@
 #include "get_next_line.h"
+#include <stdio.h>
 
 size_t	ft_strlen(const char *s)
 {
@@ -37,4 +38,22 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	temp[s1_len] = '\0';
 	return (temp);
+}
+
+void	ft_strlcpy(char **dest, char *src)
+{
+	size_t	i;
+	size_t	src_len;
+	char	*temp;
+	
+	temp = malloc(sizeof(char) * 9999);
+	src_len = ft_strlen(src);
+	i = 0;
+	while(src[i])
+	{
+		temp[i] = src[i];
+		i++;
+	}
+	temp[i] = '\0';
+	*dest = temp;
 }
