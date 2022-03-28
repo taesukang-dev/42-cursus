@@ -68,13 +68,12 @@ int main()
 {
 	char	*temp;
 	int fd = open("./test.txt", O_RDONLY);
+	int lfd = open("./test2.txt", O_RDONLY);
 	if (fd > 0)
 	{
 		temp = get_next_line(fd);
 		printf("%s\n", temp);
-		temp = get_next_line(fd);
-		printf("%s\n", temp);
-		temp = get_next_line(fd);
+		temp = get_next_line(lfd);
 		printf("%s\n", temp);
 		temp = get_next_line(fd);
 		printf("%s\n", temp);
