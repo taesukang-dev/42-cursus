@@ -5,20 +5,14 @@
 #include <unistd.h>
 #include <stdio.h>
 
-char	*get_one_line(char *s, int nl_pivot)
+char	*get_one_line(char **s, int nl_pivot)
 {
-	size_t	i;
 	char	*temp;
-
-	i = 0;
-	temp = (char *)malloc(sizeof(char) * nl_pivot);
-	while(*s && *s != '\n')
-	{
-		temp[i] = *s;
-		s++;
-		i++;
-	}
-	temp[i] = '\0';
+	
+	temp = (char *)malloc(sizeof(char) * nl_pivot + 1);
+	while(**s && **s != '\n')
+		*(temp++) = *(*s++);
+	*temp = '\0';
 	return temp;
 }
 
@@ -45,11 +39,17 @@ char	*get_next_line(int fd)
 	int			read_len;
 	int			nl_pivot;
 
-	read_len = read(fd, buf, BUFFER_SIZE);
-	ft_strlcpy(&fd_table[fd], buf);
-	nl_pivot = ft_find_nl(fd_table[fd]);
-	if (nl_pivot >= 0)
-		return get_one_line(fd_table[fd], nl_pivot);	
+	while(1)
+	{
+		nl_pivot = ft_find_nl(fd_table[fd]);
+		if (nl_pivot >= 0)
+			return get_one_line(&fd_table[fd], nl_pivot);
+		read_len = read(fd, buf, BUFFER_SIZE);
+		if (read_len < 0)
+			break;
+		buf[read_len] = '\0';
+		fd_table[fd] = ft_strjoin(fd_table[fd], buf);
+	}
 	return fd_table[fd];
 }
 
@@ -60,11 +60,15 @@ int main()
 	if (fd > 0)
 	{
 		temp = get_next_line(fd);
-		printf("the temp is %s\n", temp);
+		printf("%s\n", temp);
 		temp = get_next_line(fd);
-		printf("the temp is %s\n", temp);
+		printf("%s\n", temp);
 		temp = get_next_line(fd);
-		printf("the temp is %s\n", temp);	
+		printf("%s\n", temp);
+		temp = get_next_line(fd);
+		printf("%s\n", temp);
+		temp = get_next_line(fd);
+		printf("%s\n", temp);
 	}
 	close(fd);
 	free(temp);
