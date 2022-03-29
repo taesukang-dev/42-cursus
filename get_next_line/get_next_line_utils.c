@@ -1,12 +1,11 @@
 #include "get_next_line.h"
-#include <stdio.h>
 
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
 	i = 0;
-	while(s[i])
+	while (s[i])
 		i++;
 	return (i);
 }
@@ -17,8 +16,10 @@ char	*ft_strdup(char	*s1)
 	size_t	s1_len;
 	size_t	i;
 
+	if (!s1)
+		return (NULL);
 	s1_len = ft_strlen(s1);
-	ptr = (char *)malloc(sizeof(char) * s1_len + 1);
+	ptr = (char *)malloc(sizeof(char) * (s1_len + 1));
 	if (!ptr)
 		return (NULL);
 	i = 0;
@@ -66,10 +67,12 @@ void	ft_strlcpy(char **dest, char *src, int read_len)
 	size_t	src_len;
 	char	*temp;
 	
+	if (!dest || !src)
+		return ;
 	temp = malloc(sizeof(char) * (read_len + 1));
 	src_len = ft_strlen(src);
 	i = 0;
-	while(src[i])
+	while (src[i])
 	{
 		temp[i] = src[i];
 		i++;
