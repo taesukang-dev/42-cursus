@@ -1,27 +1,20 @@
 #include "get_next_line.h"
+#include <stdio.h>
+#include <fcntl.h>
 
 char	*get_one_line(char **s, int nl_pivot)
 {
 	char	*temp;
-	int		i;
+	char	*new_fd;
 
-	temp = (char *)malloc(sizeof(char) * (nl_pivot + 2));
+	ft_strlcpy(&temp, *s, nl_pivot);
 	if (!temp)
 		return (NULL);
-	i = 0;
-	while ((*s)[i] && (*s)[i] != '\n')
-	{
-		temp[i] = (*s)[i];
-		i++;
-	}
-	temp[i] = '\n';
-	temp[i + 1] = '\0';
-	i = 0;
-	while (i <= nl_pivot)
-	{
-		(*s)++;
-		i++;
-	}
+	new_fd = ft_strdup(*s + nl_pivot + 1);
+	if (!new_fd)
+		return (NULL);
+	free(*s);
+	*s = new_fd;
 	return (temp);
 }
 
@@ -45,7 +38,7 @@ char	*get_next_line(int fd)
 	char		buf[BUFFER_SIZE + 1];
 	int			read_len;
 	int			nl_pivot;
-	
+
 	while (1)
 	{
 		nl_pivot = ft_find_nl(fd_table[fd]);
@@ -60,4 +53,18 @@ char	*get_next_line(int fd)
 			return (NULL);
 	}
 	return (fd_table[fd]);
+}
+
+int main()
+{
+	int fd = open("test.txt", O_RDONLY);
+	char *temp;
+	if (fd > 0)
+	{
+		temp = get_next_line(fd);
+		printf("%s", temp);
+		temp = get_next_line(fd);
+		printf("%s", temp);
+	}
+	return 0;
 }

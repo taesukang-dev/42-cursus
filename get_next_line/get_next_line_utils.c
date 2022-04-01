@@ -15,7 +15,6 @@ char	*ft_strdup(char	*s1)
 	char	*ptr;
 	size_t	s1_len;
 	size_t	i;
-
 	if (!s1)
 		return (NULL);
 	s1_len = ft_strlen(s1);
@@ -63,20 +62,21 @@ char	*ft_strjoin(char *s1, char *s2)
 
 void	ft_strlcpy(char **dest, char *src, int read_len)
 {
-	size_t	i;
+	int		i;
 	size_t	src_len;
 	char	*temp;
-	
+
 	if (!dest || !src)
 		return ;
-	temp = malloc(sizeof(char) * (read_len + 1));
+	temp = malloc(sizeof(char) * (read_len + 2));
 	src_len = ft_strlen(src);
 	i = 0;
-	while (src[i])
+	while (src[i] && i < read_len + 1)
 	{
 		temp[i] = src[i];
 		i++;
 	}
 	temp[i] = '\0';
-	*dest = temp;
+	*dest = ft_strdup(temp);
+	free(temp);
 }
