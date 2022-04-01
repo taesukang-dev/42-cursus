@@ -15,6 +15,7 @@ char	*get_one_line(char **s, int nl_pivot)
 		return (NULL);
 	free(*s);
 	*s = new_fd;
+
 	return (temp);
 }
 
