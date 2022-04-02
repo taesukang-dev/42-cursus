@@ -43,40 +43,29 @@ char	*ft_strjoin(char *s1, char *s2)
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
 	temp = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
-	i = 0;
-	while (s1[i])
+	if (!temp)
 	{
-		temp[i] = s1[i];
-		i++;
+		free(s1);
+		return (NULL);
 	}
 	i = 0;
-	while (s2[i])
-	{
-		temp[s1_len] = s2[i];
-		i++;
-		s1_len++;
-	}
-	temp[s1_len] = '\0';
+	ft_strlcpy(temp, s1, s1_len + 1);
+	ft_strlcpy(temp + s1_len, s2, s2_len + 1);
+	free(s1);
 	return (temp);
 }
 
-void	ft_strlcpy(char **dest, char *src, int read_len)
+void	ft_strlcpy(char *dest, char *src, int read_len)
 {
 	int		i;
 	size_t	src_len;
-	char	*temp;
 
-	if (!dest || !src)
-		return ;
-	temp = malloc(sizeof(char) * (read_len + 2));
 	src_len = ft_strlen(src);
 	i = 0;
-	while (src[i] && i < read_len + 1)
+	while (src[i] && i <= read_len)
 	{
-		temp[i] = src[i];
+		dest[i] = src[i];
 		i++;
 	}
-	temp[i] = '\0';
-	*dest = ft_strdup(temp);
-	free(temp);
+	dest[i] = '\0';
 }

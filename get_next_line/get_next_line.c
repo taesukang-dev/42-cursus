@@ -7,12 +7,14 @@ char	*get_one_line(char **s, int nl_pivot)
 	char	*temp;
 	char	*new_fd;
 
-	ft_strlcpy(&temp, *s, nl_pivot);
-	if (!temp)
-		return (NULL);
 	new_fd = ft_strdup(*s + nl_pivot + 1);
-	if (!new_fd)
+	temp = malloc(nl_pivot + 2);
+	if (!temp)
+	{
+		free(new_fd);
 		return (NULL);
+	}
+	ft_strlcpy(temp, *s, nl_pivot + 2);
 	free(*s);
 	*s = new_fd;
 
@@ -56,12 +58,15 @@ char	*get_next_line(int fd)
 	return (fd_table[fd]);
 }
 
+
 int main()
 {
 	int fd = open("test.txt", O_RDONLY);
 	char *temp;
 	if (fd > 0)
 	{
+		temp = get_next_line(fd);
+		printf("%s", temp);
 		temp = get_next_line(fd);
 		printf("%s", temp);
 		temp = get_next_line(fd);
