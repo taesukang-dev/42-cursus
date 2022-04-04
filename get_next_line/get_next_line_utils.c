@@ -62,7 +62,7 @@ void	ft_strlcpy(char *dest, char *src, int read_len)
 
 	src_len = ft_strlen(src);
 	i = 0;
-	while (src[i] && i <= read_len)
+	while (src[i] && i + 1 < read_len)
 	{
 		dest[i] = src[i];
 		i++;

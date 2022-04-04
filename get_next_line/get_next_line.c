@@ -1,6 +1,4 @@
 #include "get_next_line.h"
-#include <stdio.h>
-#include <fcntl.h>
 
 char	*get_one_line(char **s, int nl_pivot)
 {
@@ -56,21 +54,4 @@ char	*get_next_line(int fd)
 			return (NULL);
 	}
 	return (fd_table[fd]);
-}
-
-
-int main()
-{
-	int fd = open("test.txt", O_RDONLY);
-	char *temp;
-	if (fd > 0)
-	{
-		temp = get_next_line(fd);
-		printf("%s", temp);
-		temp = get_next_line(fd);
-		printf("%s", temp);
-		temp = get_next_line(fd);
-		printf("%s", temp);
-	}
-	return 0;
 }
