@@ -15,6 +15,6 @@
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char *s1, char *s2);
-void	ft_strlcpy(char **dest, char *src, int read_len);
+void	ft_strlcpy(char *dest, char *src, int read_len);
 char    *ft_strdup(char *s1);
 #endif

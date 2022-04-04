@@ -12,23 +12,23 @@ size_t	ft_strlen(const char *s)
 
 char	*ft_strdup(char	*s1)
 {
-	char	*ptr;
+	char	*temp;
 	size_t	s1_len;
 	size_t	i;
 	if (!s1)
 		return (NULL);
 	s1_len = ft_strlen(s1);
-	ptr = (char *)malloc(sizeof(char) * (s1_len + 1));
-	if (!ptr)
+	temp = (char *)malloc(sizeof(char) * (s1_len + 1));
+	if (!temp)
 		return (NULL);
 	i = 0;
 	while (s1[i])
 	{
-		ptr[i] = s1[i];
+		temp[i] = s1[i];
 		i++;
 	}
-	ptr[i] = '\0';
-	return (ptr);
+	temp[i] = '\0';
+	return (temp);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
