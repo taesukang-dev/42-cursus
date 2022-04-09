@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/09 17:15:06 by tkang             #+#    #+#             */
+/*   Updated: 2022/04/09 17:15:08 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 int	ft_find_nl(char *s)
@@ -16,7 +28,7 @@ int	ft_find_nl(char *s)
 
 char	*ft_last_one(char **s)
 {
-	char *temp;
+	char	*temp;
 
 	temp = ft_strdup(*s);
 	if (!temp || ft_strlen(temp) == 0)
@@ -46,7 +58,6 @@ char	*get_one_line(char **s, int nl_pivot)
 	ft_strlcpy(temp, *s, nl_pivot + 2);
 	free(*s);
 	*s = new_fd;
-
 	return (temp);
 }
 

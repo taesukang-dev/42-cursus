@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/09 17:15:26 by tkang             #+#    #+#             */
+/*   Updated: 2022/04/09 17:15:27 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
-#include <stdio.h>
 
 size_t	ft_strlen(const char *s)
 {
@@ -16,6 +27,7 @@ char	*ft_strdup(char	*s1)
 	char	*temp;
 	size_t	s1_len;
 	size_t	i;
+
 	if (!s1)
 		return (NULL);
 	s1_len = ft_strlen(s1);
