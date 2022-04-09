@@ -1,5 +1,36 @@
 #include "get_next_line.h"
 
+int	ft_find_nl(char *s)
+{
+	size_t	i;
+
+	if (!s)
+		return (-1);
+	i = 0;
+	while (s[i] && s[i] != '\n')
+		i++;
+	if (s[i])
+		return (i);
+	return (-1);
+}
+
+char	*ft_last_one(char **s)
+{
+	char *temp;
+
+	temp = ft_strdup(*s);
+	if (!temp || ft_strlen(temp) == 0)
+	{
+		free(*s);
+		free(temp);
+		*s = NULL;
+		return (NULL);
+	}
+	free(*s);
+	*s = NULL;
+	return (temp);
+}
+
 char	*get_one_line(char **s, int nl_pivot)
 {
 	char	*temp;
@@ -17,20 +48,6 @@ char	*get_one_line(char **s, int nl_pivot)
 	*s = new_fd;
 
 	return (temp);
-}
-
-int	ft_find_nl(char *s)
-{
-	size_t	i;
-
-	if (!s)
-		return (-1);
-	i = 0;
-	while (s[i] && s[i] != '\n')
-		i++;
-	if (s[i])
-		return (i);
-	return (-1);
 }
 
 char	*get_next_line(int fd)
@@ -53,5 +70,5 @@ char	*get_next_line(int fd)
 		if (!fd_table[fd])
 			return (NULL);
 	}
-	return (fd_table[fd]);
+	return (ft_last_one(&fd_table[fd]));
 }
