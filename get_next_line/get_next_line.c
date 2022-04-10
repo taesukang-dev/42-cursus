@@ -68,6 +68,8 @@ char	*get_next_line(int fd)
 	int			read_len;
 	int			nl_pivot;
 
+	if (fd < 0 || OPEN_MAX <= fd || BUFFER_SIZE <= 0)
+		return (NULL);
 	while (1)
 	{
 		nl_pivot = ft_find_nl(fd_table[fd]);
