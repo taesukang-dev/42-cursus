@@ -49,7 +49,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	char	*temp;
 	size_t	s1_len;
 	size_t	s2_len;
-	size_t	i;
 
 	if (!s1)
 		return (ft_strdup(s2));
@@ -61,7 +60,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		free(s1);
 		return (NULL);
 	}
-	i = 0;
 	ft_strlcpy(temp, s1, s1_len + 1);
 	ft_strlcpy(temp + s1_len, s2, s2_len + 1);
 	free(s1);
