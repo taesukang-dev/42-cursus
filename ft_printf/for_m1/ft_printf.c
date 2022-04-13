@@ -1,16 +1,6 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-// int ft_strlen(const char *s)
-// {
-// 	int i;
-	
-// 	i = 0;
-// 	while(s[i])
-// 		i++;
-// 	return i;
-// }
-
 int printf_c(va_list *ap)
 {
 	int len;
@@ -33,7 +23,7 @@ int printf_s(va_list *ap)
 	return len;
 }
 
-int printf_per(va_list ap)
+int printf_per()
 {
 	write(1, "%", 1);
 	return 1;
@@ -51,7 +41,7 @@ int find_format(char const *s, va_list *ap)
 	else if (*s == 'd')
 		len += printf_di(ap);
 	else if (*s == '%')
-		len += printf_per(*ap);
+		len += printf_per();
 	else if(*s == 'u')
 		len += printf_u(ap);
 	else if(*s == 'p')
