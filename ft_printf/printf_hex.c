@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-#include <stdio.h>
 
 int convert_hex_lower(unsigned long arg)
 {

@@ -1,6 +1,6 @@
 #include "ft_printf.h"
-#include <stdlib.h>
 
+/*
 char	*ft_strdup(const char *s1)
 {
 	char	*ptr;
@@ -20,7 +20,9 @@ char	*ft_strdup(const char *s1)
 	ptr[i] = '\0';
 	return (ptr);
 }
+*/
 
+/*
 static size_t	ft_check_len(int n)
 {
 	size_t	i;
@@ -68,6 +70,7 @@ char	*ft_itoa(int n)
 	}
 	return (buf);
 }
+*/
 
 int printf_di(va_list ap)
 {
