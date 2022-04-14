@@ -1,18 +1,18 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-int printf_c(va_list *ap)
+int	printf_c(va_list *ap)
 {
-	int len;
-	char arg;
+	int		len;
+	char	arg;
 
 	len = 0;
 	arg = va_arg(*ap, int);
 	len += write(1, &arg, 1);
-	return len;
+	return (len);
 }
 
-int printf_s(va_list *ap)
+int	printf_s(va_list *ap)
 {
 	int		len;
 	char	*args;
@@ -20,13 +20,13 @@ int printf_s(va_list *ap)
 	args = va_arg(*ap, char *);
 	len = ft_strlen(args);
 	write(1, args, len);
-	return len;
+	return (len);
 }
 
-int printf_per()
+int	printf_per()
 {
 	write(1, "%", 1);
-	return 1;
+	return (1);
 }
 
 int find_format(char const *s, va_list *ap)
