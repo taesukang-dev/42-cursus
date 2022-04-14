@@ -14,8 +14,7 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include "./libft/libft.h"
-#include <stdio.h>
-#include <limits.h>
+
 int	ft_printf(char const *s, ...);
 int	printf_di(va_list ap);
 int	printf_u(va_list ap);
