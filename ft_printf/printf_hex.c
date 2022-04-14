@@ -1,63 +1,99 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf_hex.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/14 12:48:23 by tkang             #+#    #+#             */
+/*   Updated: 2022/04/14 12:49:53 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int convert_hex_lower(unsigned long arg)
+int	hex_check_len(unsigned long n)
 {
-	int len;
-	char c;
+	int	i;
+
+	i = 0;
+	while (n > 0)
+	{
+		n /= 16;
+		i++;
+	}
+	return (i);
+}
+
+char	*convert_hex_lower(unsigned long arg, int flag)
+{
+	int		len;
+	char	*temp;
+
+	if (arg == 0)
+		return (ft_strdup("0"));
+	if (flag == 8 && arg >= 4294967295)
+		len = 8;
+	else
+		len = hex_check_len(arg);
+	temp = malloc(sizeof(char) * len + 1);
+	temp[len] = '\0';
+	len -= 1;
+	while (len >= 0)
+	{
+		temp[len] = "0123456789abcdef"[arg % 16];
+		arg /= 16;
+		len--;
+	}
+	return (temp);
+}
+
+int	printf_addr(va_list ap)
+{
+	unsigned long	arg;
+	int				len;
+	char			*temp;
 
 	len = 0;
-	while(arg > 0)
-	{
-		c = "0123456789abcdef"[arg % 16];
-		write(1, &c, 1);
-		arg /= 16;
-		len++;
-	}
-	return len;
+	arg = va_arg(ap, unsigned long long);
+	len += write(1, "0x", 2);
+	temp = convert_hex_lower(arg, 12);
+	len += ft_strlen(temp);
+	write(1, temp, len - 2);
+	free(temp);
+	return (len);
 }
 
-int convert_hex_upper(unsigned long arg)
+int	printf_hex_lower(va_list ap)
 {
-	int len;
-	char c;
+	unsigned int	arg;
+	int				len;
+	char			*temp;
 
+	arg = va_arg(ap, unsigned int);
+	temp = convert_hex_lower(arg, 8);
+	len = ft_strlen(temp);
+	write(1, temp, len);
+	free(temp);
+	return (len);
+}
+
+int	printf_hex_upper(va_list ap)
+{
+	unsigned int	arg;
+	int				len;
+	char			*temp;
+
+	arg = va_arg(ap, unsigned int);
+	temp = convert_hex_lower(arg, 8);
 	len = 0;
-	while(arg > 0)
+	while (temp[len])
 	{
-		c = "0123456789ABCDEF"[arg % 16];
-		write(1, &c, 1);
-		arg /= 16;
+		temp[len] = ft_toupper(temp[len]);
 		len++;
 	}
-	return len;
-}
-
-int printf_addr(va_list ap)
-{
-	unsigned long arg;
-	int len;
-
-	arg = va_arg(ap, unsigned long);
-	len = convert_hex_lower(arg);
-	return len;
-}
-
-int printf_hex_lower(va_list ap)
-{
-	unsigned long arg;
-	int len;
-
-	arg = va_arg(ap, unsigned long);
-	len = convert_hex_lower(arg);
-	return len;
-}
-
-int printf_hex_upper(va_list ap)
-{
-	unsigned long arg;
-	int len;
-
-	arg = va_arg(ap, unsigned long);
-	len = convert_hex_upper(arg);
-	return len;
+	len = ft_strlen(temp);
+	write(1, temp, len);
+	free(temp);
+	return (len);
 }

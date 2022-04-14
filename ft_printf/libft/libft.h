@@ -6,14 +6,15 @@
 /*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 19:27:08 by tkang             #+#    #+#             */
-/*   Updated: 2022/03/20 19:27:19 by tkang            ###   ########.fr       */
+/*   Updated: 2022/04/14 12:52:20 by tkang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-# define	LIBFT_H
+# define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
+
 typedef struct s_list
 {
 	void			*content;
