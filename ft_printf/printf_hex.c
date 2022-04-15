@@ -32,7 +32,7 @@ char	*convert_hex_lower(unsigned long arg, int flag)
 
 	if (arg == 0)
 		return (ft_strdup("0"));
-	if (flag == 8 && arg >= 4294967295)
+	if (flag == 8 && arg > 4294967295)
 		len = 8;
 	else
 		len = hex_check_len(arg);
