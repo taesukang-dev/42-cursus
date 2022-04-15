@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	hex_check_len(unsigned long n)
+static int	hex_check_len(unsigned long n)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ int	hex_check_len(unsigned long n)
 	return (i);
 }
 
-char	*convert_hex_lower(unsigned long long arg, int flag)
+static char	*convert_hex_lower(unsigned long long arg, int flag)
 {
 	int		len;
 	char	*temp;

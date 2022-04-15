@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	check_length(unsigned int a)
+static int	check_length(unsigned int a)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ int	check_length(unsigned int a)
 	return (i);
 }
 
-int	convert_str(unsigned int a)
+static int	convert_str(unsigned int a)
 {
 	char	*temp;
 	int		len;
