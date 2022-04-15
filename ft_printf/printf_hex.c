@@ -25,7 +25,7 @@ int	hex_check_len(unsigned long n)
 	return (i);
 }
 
-char	*convert_hex_lower(unsigned long arg, int flag)
+char	*convert_hex_lower(unsigned long long arg, int flag)
 {
 	int		len;
 	char	*temp;
@@ -50,9 +50,9 @@ char	*convert_hex_lower(unsigned long arg, int flag)
 
 int	printf_addr(va_list ap)
 {
-	unsigned long	arg;
-	int				len;
-	char			*temp;
+	unsigned long long	arg;
+	int					len;
+	char				*temp;
 
 	len = 0;
 	arg = va_arg(ap, unsigned long long);
