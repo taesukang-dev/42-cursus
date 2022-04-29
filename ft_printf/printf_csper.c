@@ -18,7 +18,7 @@ int	printf_c(va_list ap)
 	char	arg;
 
 	len = 0;
-	arg = va_arg(ap, int);
+	arg = va_arg(ap, size_t);
 	len += write(1, &arg, 1);
 	return (len);
 }

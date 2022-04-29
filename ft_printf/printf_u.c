@@ -57,7 +57,7 @@ int	printf_u(va_list ap)
 	unsigned int	arg;
 	int				len;
 
-	arg = va_arg(ap, unsigned int);
+	arg = va_arg(ap, size_t);
 	len = convert_str(arg);
 	return (len);
 }

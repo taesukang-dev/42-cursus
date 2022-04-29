@@ -18,7 +18,7 @@ int	printf_di(va_list ap)
 	int		len;
 	int		arg;
 
-	arg = va_arg(ap, int);
+	arg = va_arg(ap, size_t);
 	temp = ft_itoa(arg);
 	len = ft_strlen(temp);
 	write(1, temp, len);

@@ -70,7 +70,7 @@ int	printf_hex_lower(va_list ap)
 	int				len;
 	char			*temp;
 
-	arg = va_arg(ap, unsigned int);
+	arg = va_arg(ap, size_t);
 	temp = convert_hex_lower(arg, 8);
 	len = ft_strlen(temp);
 	write(1, temp, len);
@@ -84,7 +84,7 @@ int	printf_hex_upper(va_list ap)
 	int				len;
 	char			*temp;
 
-	arg = va_arg(ap, unsigned int);
+	arg = va_arg(ap, size_t);
 	temp = convert_hex_lower(arg, 8);
 	len = 0;
 	while (temp[len])
