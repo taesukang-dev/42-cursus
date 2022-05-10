@@ -1,5 +1,32 @@
+## LVM
+`lsblk` check partitioning scheme
+
+<br />
+
+## sudoers
+`visudo /etc/sudoers` sudoers path
+
+<br />
+
+sudoers는 일반 계정에 sudo 명령어를 이용하여 임시로 root 권한을 주는 것을 의미한다.
+
+## check log
+`/var/log/sudo`
+
+<br />
+
 ## User
+
 - user, usergroup
+
+`usermod -aG 'group' 'user'`
+
+## password policy
+`vi /etc/login.defs` password expire days
+
+<br />
+
+`vi /etc/pam.d/common-password` password regex
 
 <br />
 
@@ -74,3 +101,5 @@
 
 `journalctl _COMM=sudo | wc -l` sudo
 
+## cron
+`crontab -e` settings
