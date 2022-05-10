@@ -4,7 +4,9 @@
 <br />
 
 ## sudoers
-`visudo /etc/sudoers` sudoers path
+`visudo /etc/sudoers` sudoers path <br />
+`requiretty` tty환경에서만 sudo를 실행하겠다. <br />
+`log_input` , `log_output` pseudo tty (pts, 의사 tty)에서 sudo 명령을 실행하고 모든 사용자 입력과 출력을 화면에 수신 가능하게 기록 <br />
 
 <br />
 
@@ -23,9 +25,9 @@ sudoers는 일반 계정에 sudo 명령어를 이용하여 임시로 root 권한
 
 ## password policy
 `vi /etc/login.defs` password expire days
-
 <br />
 
+`libpam-pwquality` 패스워드 설정 강화를 위한 모듈 <br />
 `vi /etc/pam.d/common-password` password regex
 
 <br />
@@ -51,6 +53,7 @@ sudoers는 일반 계정에 sudo 명령어를 이용하여 임시로 root 권한
 <br />
 
 ## monitors
+`sysstat` 리눅스 성능 측정 도구, cpu memory network 등 지표를 수치화한다. <br />
 `uname -a` os and kernel version
 
 <br />
@@ -102,4 +105,5 @@ sudoers는 일반 계정에 sudo 명령어를 이용하여 임시로 root 권한
 `journalctl _COMM=sudo | wc -l` sudo
 
 ## cron
-`crontab -e` settings
+`crontab -e` settings <br />
+`wall` 사용자의 터미널로 메세지를 보낸다.
