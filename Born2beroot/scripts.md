@@ -38,7 +38,9 @@ sudoers는 일반 계정에 sudo 명령어를 이용하여 임시로 root 권한
 <br />
 
 ## SSH
-`ssh id@ip -p 4242`
+`ssh id@ip -p 4242` <br />
+`ss -tupln` ss로 리눅스 시스템 소켓 상태를 조회 <br />
+`/etc/network/interfaces` interface settings
 
 <br />
 
@@ -107,3 +109,30 @@ sudoers는 일반 계정에 sudo 명령어를 이용하여 임시로 root 권한
 ## cron
 `crontab -e` settings <br />
 `wall` 사용자의 터미널로 메세지를 보낸다.
+
+## WordPress
+- php로 작성된 온라인 오픈소스 웹사이트 제작 도구
+`ufw allow 80` well-known port
+
+## Lighttpd
+- 오픈소스 경량 웹 서버
+
+```bash
+$ sudo systemctl stop lighttpd.service	// 서버 중지
+$ sudo systemctl start lighttpd.service	// 서버 시작
+$ sudo systemctl enable lighttpd.service	// 서버 부팅 (enable with start up)
+```
+` vi /etc/lighttpd/lighttpd.conf` lighttpd 설정
+
+## MariaDB
+- RDBMS
+```bash
+$ sudo systemctl stop mysql.service	// DB 중지
+$ sudo systemctl start mysql.service	// DB 시작
+$ sudo systemctl enable mysql.service	// DB 부팅 (enable with start up)
+$ sudo mysql_secure_installation // 보안 설정
+$ sudo mysql -u root -p
+```
+
+## PHP
+`vim /etc/lighttpd/conf-available/15-fastcgi-php.conf` fastcgi 적용

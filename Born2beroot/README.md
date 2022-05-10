@@ -200,3 +200,17 @@
     - 주
       - 범위 : 0 ~ 6 또는 SUN ~ SAT
       - option : `, - ? L #`
+
+## WordPress
+- php로 작성된 온라인 오픈소스 웹사이트 제작 도구
+
+## Lighttpd
+- 오픈소스 경량 웹 서버
+
+## MariaDB
+- RDBMS
+
+## PHP
+- SSR script lang
+- CGI (Common Gateway Interface) : 외부 프로그램을 연결해주는 표준화된 프로토콜, 하나의 요청에 하나의 프로세스를 생성한다.
+- FastCGI : 요청이 있을 때 하나의 프로세스로 요청들을 처리하여 프로세스를 생성하고 제거하는 부하를 경감시킨다.
