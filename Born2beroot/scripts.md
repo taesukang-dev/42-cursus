@@ -1,3 +1,34 @@
+## system
+`sudo systemctl status ufw` ufw <br />
+`sudo systemctl status ssh` ssh <br />
+`hostnamectl` debian <br />
+
+## group
+`cat /etc/group | grep tkang`
+
+<br />
+
+## User
+`sudo useradd 'user'` <br />
+`usermod -aG 'group' 'user'` <br />
+
+<br />
+
+## password policy
+`vi /etc/login.defs` password expire days
+<br />
+
+`libpam-pwquality` 패스워드 설정 강화를 위한 모듈 <br />
+`vi /etc/pam.d/common-password` password regex
+
+<br />
+
+## hostname
+`hostnamectl` check host name <br />
+`hostnamectl set-hostname 'change-name'`
+
+<br />
+
 ## LVM
 `lsblk` check partitioning scheme
 
@@ -17,28 +48,14 @@ sudoers는 일반 계정에 sudo 명령어를 이용하여 임시로 root 권한
 
 <br />
 
-## User
-
-- user, usergroup
-
-`usermod -aG 'group' 'user'`
-
-## password policy
-`vi /etc/login.defs` password expire days
-<br />
-
-`libpam-pwquality` 패스워드 설정 강화를 위한 모듈 <br />
-`vi /etc/pam.d/common-password` password regex
-
-<br />
-
-## hostname
-`hostnamectl` check host name
-
-<br />
+## ufw
+`sudo systemctl status ufw` ufw <br />
+`sudo ufw allow 'port-number'` allow <br />
+`sudo ufw delete allow 'port-number'` delete <br />
 
 ## SSH
 `ssh id@ip -p 4242` <br />
+`vim /etc/ssh/sshd_config ` config file <br />
 `ss -tupln` ss로 리눅스 시스템 소켓 상태를 조회 <br />
 `/etc/network/interfaces` interface settings
 
@@ -113,6 +130,8 @@ sudoers는 일반 계정에 sudo 명령어를 이용하여 임시로 root 권한
 ## WordPress
 - php로 작성된 온라인 오픈소스 웹사이트 제작 도구
 `ufw allow 80` well-known port
+`/var/www/html/wordpress`
+`/var/www/html/wordpress/wp-config.php`
 
 ## Lighttpd
 - 오픈소스 경량 웹 서버
