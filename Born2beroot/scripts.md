@@ -11,6 +11,7 @@
 ## User
 `sudo useradd 'user'` <br />
 `usermod -aG 'group' 'user'` <br />
+`cut -f1 -d: /etc/passwd` <br />
 
 <br />
 
