@@ -136,3 +136,23 @@ $ sudo mysql -u root -p
 
 ## PHP
 `vim /etc/lighttpd/conf-available/15-fastcgi-php.conf` fastcgi 적용
+
+## ftp, vsftpd
+`dpkg -l | grep vsftpd` vsftpd <br />
+`dpkg -l | grep ftp` ftp <br />
+`ufw status` check 21 prot (well known port) <br />
+`vim /etc/vsftpd.conf` vsftpd setting <br />
+```bash
+write_enable=YES // 업로드 가능하게
+user_sub_token=$USER
+local_root=/home/$USER/ftp // ftp root directory
+```
+
+<br />
+
+`vim /etc/vsftpd.userlist` vsftpd user list <br />
+```bash
+userlist_enable=YES
+userlist_file=/etc/vsftpd.userlist
+userlist_deny=NO // userlist 등록된 계정만 접속 가능
+```
