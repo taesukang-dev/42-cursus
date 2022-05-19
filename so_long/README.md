@@ -9,7 +9,7 @@
 ## mlx
 - cocoa, x-window에 대해 몰라도 쓸 수 있게 하는 라이브러리
 - macos는 화면에 대한 그래픽 접근을 관리하기 때문에 application에 깔려 있는 graphical 프레임워크에 등록해야 한다.
-    - gcc -L./ -lmlx `-framework OpenGL -framwork Appkit` main.c
+    - gcc -L./ -lmlx `-framework OpenGL -framework Appkit` main.c
 - DLL ... ?
 
 ### mlx's functions
