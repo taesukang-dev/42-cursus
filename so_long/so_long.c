@@ -50,7 +50,7 @@ int init_game_info(char *buf, int height, t_game_info *game)
     wall_check(buf, height, game->width, game); 
     // 맵을 다 저장하고 wall_check를 돌려야되나...?
     // index % 13 == 1 || 0
-    // 13 - i > 0 , 첫줄 || height - 1 / 13 >= height, 마지막줄
+    // 13 - i > 0 , 첫줄 || index / 13 >= height - 1, 마지막줄
     
     counting_char(buf, game);
     // game -> save map lines...?
