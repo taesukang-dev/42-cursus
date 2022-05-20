@@ -20,59 +20,66 @@ int counting_char(char *buf, t_game_info *game)
 
 int wall_check(char *buf, int height, int width, t_game_info *game)
 {
-    if (height == 0)
+    if (height == 0 || height == game->height)
     {
         while(*buf)
+        {
             if (*buf != 1)
                 return 0;
+            buf++;
+        }
     }
     else if (height != 0 && game->height != height)
-    else if (height == game->height)
+    {
+        // [0], [width - 1] == 1
+        // !e, !p, !c, !0, !1 ??
+    }
 
     return 0;
 }
 
 int init_game_info(char *buf, int height, t_game_info *game)
 {
-    int width;
+    int     width;
 
-    if (height != 0)
-    {
-        wall_check(); 
-        // last one, start point is width * (height - 1)
-    }
-    else if (height == game->height)
-    {
-        width = ft_strlen(buf);
-        game->width = width;
-
-    }
+    width = ft_strlen(buf);
+    if (!height)
+        game->width = width - 1;
+    if (game->width != width - 1)
+        return 0;
+    wall_check(buf, height, game->width, game); 
+    // 맵을 다 저장하고 wall_check를 돌려야되나...?
+    // index % 13 == 1 || 0
+    // 13 - i > 0 , 첫줄 || height - 1 / 13 >= height, 마지막줄
+    
+    counting_char(buf, game);
+    // game -> save map lines...?
+    free(buf);
+    return 0;
 }
 
 int is_valid_map(int fd)
 {
-    int     width;
     int     height;
-    char *buf;
-    t_game_info *game = ft_calloc(1, sizeof(t_game_info));
-
-    // replace to init_game_info
-    buf = get_next_line(fd); // 얘 저장해둬야 되나...?
-    width = ft_strlen(buf); 
-    game->width = width;
+    char    *buf;
+    char    *last;
+    t_game_info *game;
     
+    ft_calloc(1, sizeof(t_game_info));
     height = 0;
+    buf = get_next_line(fd);
     while(buf)
     {
-        buf = get_next_line(fd); 
-        width = ft_strlen(buf);
-        if (game->width != width)
-            return 0;
-        counting_char(buf, game);
-        // wall_check(buf, height);    
-        free(buf);
+        last = ft_strdup(buf); // 마지막줄
+        buf = get_next_line(fd);
+        if (!buf)
+            break ;
+        init_game_info(buf, height, game);
+        free(last);
         height++;
     }
+    game->height = height;
+    init_game_info(last, height, game);
     return 0;
 }
 
