@@ -15,9 +15,9 @@ typedef struct s_game_info
     int     width;
     int     height;
 
-    int     e_count; // exit
-    int     p_count; // start point
-    int     c_count; // collections
+    int     e_count; // exit > 1
+    int     p_count; // start point == 1
+    int     c_count; // collections > 0
     char    *map;
 } t_game_info;
 
