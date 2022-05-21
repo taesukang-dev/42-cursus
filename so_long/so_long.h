@@ -10,6 +10,15 @@
 // perror, strerror
 #include <stdio.h>
 
+#define KEY_PRESS   2
+#define KEY_EXIT    17
+
+#define ESC         53
+#define A           0
+#define S           1
+#define D           2
+#define W           13
+
 typedef struct s_img
 {
     void    *by; // yoda
@@ -49,5 +58,8 @@ int counting_char(char c, t_game_info *game);
 
 t_img   init_img(void *mlx);
 int render(t_game_info *game);
+
+int	keypress_event(int key, t_game_info *game);
+int click_redcross(t_game_info *game);
 
 #endif
