@@ -47,3 +47,13 @@
 - mlx_expose_hook
 - mlx_loop_hook
     - 아무 이벤트도 일어나지 않을 때 콜백 호출
+
+## exit(0) exit(1)
+- exit(0)
+    - 일반 종료
+- write(1, buf, length)
+    - 일반 출력
+- exit(1)
+    - 에러 종료
+- write(2, buf, length)
+    - 에러 출력
