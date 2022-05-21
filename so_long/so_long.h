@@ -15,10 +15,22 @@ typedef struct s_game_info
     int     width;
     int     height;
 
-    int     e_count; // exit
-    int     p_count; // start point
-    int     c_count; // collections
+    int     e_count;
+    int     p_count;
+    int     c_count;
     char    *map;
 } t_game_info;
+
+int     save_info(char *buf, int height, t_game_info *game);
+int     init_game_info(int fd, t_game_info *game);
+
+int     ft_strlen_without_nl(char *str);
+char	*ft_strdup_without_nl(char	*s1);
+void	ft_strlcpy_without_nl(char *dest, char *src, int read_len);
+char	*ft_strjoin_without_nl(char *s1, char *s2);
+
+int wall_check(t_game_info *game);
+int char_check(char map);
+int counting_char(char c, t_game_info *game);
 
 #endif
