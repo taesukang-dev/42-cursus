@@ -30,6 +30,13 @@ int init_game(t_game_info *game)
 	return 0;
 }
 
+int	presskey_event(int key, t_game_info *game)
+{
+	if (key == 53)
+		printf("%d", key);
+	return 0;
+}
+
 int main(int ac, char *av[])
 {
 	int         fd;
@@ -41,6 +48,8 @@ int main(int ac, char *av[])
 	fd = open(av[1], O_RDONLY);
 	init_game_info(fd, game);
 	init_game(game);
+	mlx_hook(game->mlx_win, 2, 0, &presskey_event, game);
+	// 2번째 인자가 keypress event, 3번째가 keypressmask
 	mlx_loop(game->mlx);
 	return 0;
 }

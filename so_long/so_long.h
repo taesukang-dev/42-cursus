@@ -19,7 +19,6 @@ typedef struct s_img
     void    *wl; // wall
 } t_img;
 
-
 typedef struct s_game_info
 {
     void    *mlx;
@@ -27,9 +26,11 @@ typedef struct s_game_info
     t_img   img;
     int     width;
     int     height;
-    int     e_count;
-    int     p_count;
-    int     c_count;
+    int     e_count; // exit
+    int     p_count; // start point
+    int     c_count; // collection
+	int		point_count; // earning collections
+	int		walk_count;
     char    *map;
 } t_game_info;
 
