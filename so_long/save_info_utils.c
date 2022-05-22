@@ -1,5 +1,15 @@
 #include "so_long.h"
 
+int ft_strlen(char *str)
+{
+    size_t  i;
+
+    i = 0;
+    while(str[i])
+        i++;
+    return (i);
+}
+
 int ft_strlen_without_nl(char *str)
 {
     size_t  i;

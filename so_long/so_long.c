@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-int init_game_info(int fd, t_game_info *game)
+void init_game_info(int fd, t_game_info *game)
 {
 	char    *buf;
 	int     height;
@@ -18,16 +18,14 @@ int init_game_info(int fd, t_game_info *game)
 	}
 	close(fd);
 	wall_check(game);
-	return 0;
 }
 
-int init_game(t_game_info *game)
+void init_game(t_game_info *game)
 {
 	game->mlx = mlx_init();
 	game->img = init_img(game->mlx);
 	game->mlx_win = mlx_new_window(game->mlx, game->width * 64, game->height * 64, "so_long");
 	render(game);
-	return 0;
 }
 
 int main(int ac, char *av[])

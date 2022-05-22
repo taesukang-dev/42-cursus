@@ -18,24 +18,16 @@ void	render_img(t_game_info *g, int h, int w)
 {
 	mlx_put_image_to_window(g->mlx, g->mlx_win, g->img.fl, w * 64, h * 64);
 	if (g->map[h * g->width + w] == '1')
-	{
 		mlx_put_image_to_window(g->mlx, g->mlx_win, g->img.wl, w * 64, h * 64);
-	}
 	else if (g->map[h * g->width + w] == 'C')
-	{
 		mlx_put_image_to_window(g->mlx, g->mlx_win, g->img.cl, w * 64, h * 64);
-	}
 	else if (g->map[h * g->width + w] == 'P')
-	{
 		mlx_put_image_to_window(g->mlx, g->mlx_win, g->img.md, w * 64, h * 64);
-	}
 	else if (g->map[h * g->width + w] == 'E')
-	{
 		mlx_put_image_to_window(g->mlx, g->mlx_win, g->img.by, w * 64, h * 64);
-	}
 }
 
-int render(t_game_info *game)
+void render(t_game_info *game)
 {
 	int	height;
 	int	width;
@@ -51,5 +43,4 @@ int render(t_game_info *game)
 		}
 		height++;
 	}
-	return 0;
 }
