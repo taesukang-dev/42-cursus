@@ -25,14 +25,14 @@ void	wall_check(t_game_info *game)
 	while (game->map[i])
 	{
 		if ((game->width - i > 0 || i / game->width >= game->height - 1) && game->map[i] != '1')
-			print_errors("it must be a wall\n");
+			print_errors("first and last line must be fill with a wall\n");
 		else
 		{
 			if (!char_check(game->map[i]))
 				print_errors("invalid charaters\n");
 			if ((i % game->width == 0 || i % game->width == game->width - 1) \
 				&& game->map[i] != '1')
-				print_errors("first and last line must be fill with wall\n");
+				print_errors("first and last one must be a wall\n");
 		}
 		counting_char(game->map[i], game);
 		i++;
