@@ -16,7 +16,7 @@ OBJS = $(SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	gcc -o $(NAME) $(OBJS) -L./ -lmlx -framework OpenGL -framework Appkit
+	$(CC) -o $(NAME) $(OBJS) -L./ -lmlx -framework OpenGL -framework Appkit
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -I./ -o $@
