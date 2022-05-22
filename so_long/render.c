@@ -27,16 +27,16 @@ void	render_img(t_game_info *g, int h, int w)
 		mlx_put_image_to_window(g->mlx, g->mlx_win, g->img.by, w * 64, h * 64);
 }
 
-void render(t_game_info *game)
+void	render(t_game_info *game)
 {
 	int	height;
 	int	width;
 
 	height = 0;
-	while(height < game->height)
+	while (height < game->height)
 	{
 		width = 0;
-		while(width < game->width)
+		while (width < game->width)
 		{
 			render_img(game, height, width);
 			width++;

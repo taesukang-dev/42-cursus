@@ -1,23 +1,23 @@
 #include "so_long.h"
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-    size_t  i;
+	size_t	i;
 
-    i = 0;
-    while(str[i])
-        i++;
-    return (i);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
-int ft_strlen_without_nl(char *str)
+int	ft_strlen_without_nl(char *str)
 {
-    size_t  i;
+	size_t	i;
 
-    i = 0;
-    while(str[i] && str[i] != '\n')
-        i++;
-    return (i);
+	i = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	return (i);
 }
 
 char	*ft_strdup_without_nl(char	*s1)

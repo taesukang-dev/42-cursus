@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void press_a(t_game_info *game)
+void	press_a(t_game_info *game)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ void press_a(t_game_info *game)
 	}
 }
 
-void press_s(t_game_info *game)
+void	press_s(t_game_info *game)
 {
 	int	i;
 
@@ -40,7 +40,8 @@ void press_s(t_game_info *game)
 		game->point_count += 1;
 	if (game->map[i + game->width] == 'E' && game->c_count == game->point_count)
 		clear_game(game);
-	else if (game->map[i + game->width] != '1' && game->map[i + game->width] != 'E')
+	else if (game->map[i + game->width] != '1' && \
+			game->map[i + game->width] != 'E')
 	{
 		game->map[i] = '0';
 		game->map[i + game->width] = 'P';
@@ -50,7 +51,7 @@ void press_s(t_game_info *game)
 	}
 }
 
-void press_d(t_game_info *game)
+void	press_d(t_game_info *game)
 {
 	int	i;
 
@@ -75,7 +76,7 @@ void press_d(t_game_info *game)
 	}
 }
 
-void press_w(t_game_info *game)
+void	press_w(t_game_info *game)
 {
 	int	i;
 
@@ -88,9 +89,11 @@ void press_w(t_game_info *game)
 	}
 	if (game->map[i - game->width] == 'C')
 		game->point_count += 1;
-	if (game->map[i - game->width] == 'E' && game->c_count == game->point_count)
+	if (game->map[i - game->width] == 'E' && \
+		game->c_count == game->point_count)
 		clear_game(game);
-	else if (game->map[i - game->width] != '1' && game->map[i - game->width] != 'E')
+	else if (game->map[i - game->width] != '1' && \
+			game->map[i - game->width] != 'E')
 	{
 		game->map[i] = '0';
 		game->map[i - game->width] = 'P';

@@ -13,8 +13,8 @@ void	counting_char(char c, t_game_info *game)
 int	char_check(char map)
 {
 	if (map != '1' && map != '0' && map != 'E' && map != 'P' && map != 'C')
-		return 0;
-	return 1;
+		return (0);
+	return (1);
 }
 
 void	wall_check(t_game_info *game)
@@ -24,7 +24,8 @@ void	wall_check(t_game_info *game)
 	i = 0;
 	while (game->map[i])
 	{
-		if ((game->width - i > 0 || i / game->width >= game->height - 1) && game->map[i] != '1')
+		if ((game->width - i > 0 || i / game->width >= game->height - 1) \
+			&& game->map[i] != '1')
 			print_errors("first and last line must be fill with a wall\n");
 		else
 		{
@@ -39,16 +40,16 @@ void	wall_check(t_game_info *game)
 	}
 }
 
-void save_info(char *buf, int height, t_game_info *game)
+void	save_info(char *buf, int height, t_game_info *game)
 {
-    int     width;
+	int	width;
 
-    width = ft_strlen_without_nl(buf);
-    if (height == 1)
-        game->width = width;
-    else if (game->width != width)
-        print_errors("it's not a rectangular\n");
-    game->height = height;
-    game->map = ft_strjoin_without_nl(game->map, buf);
-    free(buf);
+	width = ft_strlen_without_nl(buf);
+	if (height == 1)
+		game->width = width;
+	else if (game->width != width)
+		print_errors("it's not a rectangular\n");
+	game->height = height;
+	game->map = ft_strjoin_without_nl(game->map, buf);
+	free(buf);
 }
