@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/26 11:01:22 by tkang             #+#    #+#             */
+/*   Updated: 2022/05/26 11:01:23 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	counting_char(char c, t_game_info *game)
@@ -52,4 +64,23 @@ void	save_info(char *buf, int height, t_game_info *game)
 	game->height = height;
 	game->map = ft_strjoin_without_nl(game->map, buf);
 	free(buf);
+}
+
+void	check_map_name(char *str)
+{
+	int	i;
+	int	j;
+
+	i = ft_strlen(str) - 1;
+	j = 0;
+	while (str[i])
+	{
+		if (str[i] == '.')
+			break ;
+		i--;
+		j++;
+	}
+	i = ft_strlen(str);
+	if (str[i - 3] != 'b' || str[i - 2] != 'e' || str[i - 1] != 'r' || j != 3)
+		print_errors("not a ber file\n");
 }

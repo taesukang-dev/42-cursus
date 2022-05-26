@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/26 11:01:08 by tkang             #+#    #+#             */
+/*   Updated: 2022/05/26 11:01:09 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	init_game_info(int fd, t_game_info *game)
@@ -18,6 +30,8 @@ void	init_game_info(int fd, t_game_info *game)
 	}
 	close(fd);
 	wall_check(game);
+	if (game->c_count < 1 || game->p_count != 1 || game->e_count < 1)
+		print_errors("map error\n");
 }
 
 void	init_game(t_game_info *game)
@@ -36,8 +50,11 @@ int	main(int ac, char *av[])
 
 	game = calloc(1, sizeof(t_game_info));
 	if (ac != 2)
-		print_errors("missing map");
+		print_errors("not one map");
+	check_map_name(av[1]);
 	fd = open(av[1], O_RDONLY);
+	if (fd < 0)
+		print_errors("dosent exist a file\n");
 	init_game_info(fd, game);
 	init_game(game);
 	mlx_hook(game->mlx_win, KEY_PRESS, 0, &keypress_event, game);

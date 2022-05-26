@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/26 11:01:14 by tkang             #+#    #+#             */
+/*   Updated: 2022/05/26 11:01:15 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -51,6 +63,7 @@ void	save_info(char *buf, int height, t_game_info *game);
 void	wall_check(t_game_info *game);
 int		char_check(char map);
 void	counting_char(char c, t_game_info *game);
+void	check_map_name(char *str);
 
 t_img	init_img(void *mlx);
 void	render(t_game_info *game);
