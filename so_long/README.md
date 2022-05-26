@@ -14,7 +14,7 @@
   - gcc -L./ -lmlx `-framework OpenGL -framework Appkit` main.c
 - DLL ... ?
 
-### mlx's functions
+## mlx's functions
 - mlx_init
   - 모든 함수에 접근할 수 있게 한다.
   - 그래픽 시스템에 connection을 만든다.
