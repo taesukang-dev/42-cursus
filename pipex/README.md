@@ -165,5 +165,10 @@ int main()
 ### 참고
 
 - `int main(int argc, char *argv[], char *envp[]);` envp는 환경변수
+	- 인자 3개는 POSIX 표준이 아니다.
+	- https://www.gnu.org/software/libc/manual/html_node/Environment-Access.html
+	- https://www.gnu.org/software/libc/manual/html_node/Program-Arguments.html
+- `extern char **environ;` 전역으로 environ, 환경변수 가져올 수 있음
 - `<` : stdin, `<` 다음의 기호를 source로 사용 (cat, grep...etc)
+	- ls 는 표준 입력을 받지 않고, argv를 통해서 사용자 입력을 받는다.
 - `>` : stdout
