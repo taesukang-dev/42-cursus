@@ -161,3 +161,7 @@ int main()
 	return 0;
 }
 ```
+
+### 참고
+
+- `int main(int argc, char *argv[], char *envp[]);` envp는 환경변수
