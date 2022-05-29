@@ -165,3 +165,5 @@ int main()
 ### 참고
 
 - `int main(int argc, char *argv[], char *envp[]);` envp는 환경변수
+- `<` : stdin, `<` 다음의 기호를 source로 사용 (cat, grep...etc)
+- `>` : stdout
