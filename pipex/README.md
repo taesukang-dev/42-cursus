@@ -82,3 +82,82 @@ status >> 8    ->    WEXITSTATUS( status)
 - 다른 프로그램을 실행하고 자신은 종료한다.
 - 인자는 각각 파일이름, 파일인자의 포인터, 환경변수의 포인터이다.
 - path의 파일(바이너리 실행파일이거나, 스크립트 파일이어야 한다.)을 실행하고, argv envp를 인자로 전달한다.
+
+
+```C
+int main()
+{
+	int fd1[2];
+	int fd2[2];
+	char buffer[BUFSIZ];
+	pid_t pid;
+
+	if (pipe(fd1) == -1 || pipe(fd2) == -1)
+	{
+		printf("pipe error");
+		exit(1);
+	}
+	pid = fork();
+
+	if (pid == -1)
+	{
+		printf("fork() error");
+		exit(1);
+	}
+	if (pid == 0)
+	{
+		write(fd1[1], "자식에서 입력 \n", 25);
+		read(fd2[0], buffer, 25); 
+		// 만약 부모에서 쓰지 않으면 여기에서 대기 중으로 실행 안됨
+		// 읽을 fd가 있을 때 까지 대기
+		printf("\n자식 출력 : %s\n", buffer);
+	}
+	else
+	{
+		// write(fd2[1], "부모에서 입력 \n", 25);
+		read(fd1[0], buffer, BUFSIZ);
+		printf("\n부모 출력 : %s\n", buffer);
+	}
+	return 0;
+}
+```
+
+```C
+int main()
+{
+	int fd1[2];
+	int fd2[2];
+	char buffer[BUFSIZ];
+	pid_t pid;
+
+	if (pipe(fd1) == -1 || pipe(fd2) == -1)
+	{
+		printf("pipe error");
+		exit(1);
+	}
+	pid = fork();
+
+	if (pid == -1)
+	{
+		printf("fork() error");
+		exit(1);
+	}
+	if (pid == 0)
+	{
+		write(fd1[1], "자식에서 입력 \n", 25);
+		read(fd2[0], buffer, 25); 
+		// 만약 부모에서 쓰지 않으면 여기에서 대기 중으로 실행 안됨
+		// 읽을 fd가 있을 때 까지 대기
+		printf("\n자식 출력 : %s\n", buffer);
+	}
+	else
+	{
+		wait(NULL); // 자식 프로세스가 끝날 때 까지 대기로 무한대기
+		write(fd2[1], "부모에서 입력 \n", 25);
+		// wait(NULL); 이 상태에서는 실행 가능
+		read(fd1[0], buffer, BUFSIZ);
+		printf("\n부모 출력 : %s\n", buffer);
+	}
+	return 0;
+}
+```
