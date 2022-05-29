@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/wait.h>
+# include <fcntl.h>
 #include "./libft/libft.h"
 
 typedef struct s_cmd
@@ -15,9 +16,10 @@ typedef struct s_cmd
 
 typedef struct s_ipc
 {
-	char	*infile;
+	int		infile;
 	t_cmd	cmd[2];
-	char	*outfile;
+	int		pipes[2];
+	int		outfile;
 	char	**environ;
 } t_ipc;
 
