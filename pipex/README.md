@@ -63,6 +63,8 @@ status >> 8    ->    WEXITSTATUS( status)
 - dup2의 반환값은 fd2가 된다.
 - 만약 2번째 인자의 fd 값이 열려있다면 기존 fd를 닫고 새로 할당받는다.
 - stdout의 경우 가리키던 terminal 에서 복제된 fd의 inode, stdin의 경우 가리키던 I/O device에서 복제된 fd의 inode
+  - 표준 스트림 (stdin, stdout, stderr) 은 shell에서 상속 받는다.
+  - DMA...?
 
 ## access <unistd.h>
 
