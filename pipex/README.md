@@ -62,6 +62,7 @@ status >> 8    ->    WEXITSTATUS( status)
 - cf) dup2는 기능은 동일하지만, fd 값을 지정한 곳에 복사할 수 있다.
 - dup2의 반환값은 fd2가 된다.
 - 만약 2번째 인자의 fd 값이 열려있다면 기존 fd를 닫고 새로 할당받는다.
+- stdout의 경우 가리키던 terminal 에서 복제된 fd의 inode, stdin의 경우 가리키던 I/O device에서 복제된 fd의 inode
 
 ## access <unistd.h>
 
