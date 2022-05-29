@@ -2,6 +2,7 @@
 
 - 나만의 2d 게임을 만들어보자!
 - <a href="./subject.md">과제 전문</a>
+- <img src="./static/so_long.png" />
 
 ## x-window
 
