@@ -1,72 +1,91 @@
 #include "pipex.h"
 
-// char *str[3];
-// str[0] = "ls";
-// str[1] = "-al";
-// str[2] = NULL;
-// execve("/bin/ls", str, NULL);
+void	two_d_free(char **temp)
+{
+	int	i;
 
-// infile -> child process stdin으로 사용한다.
-// fd[1] -> stdout 으로 쓴다
+	i = 0;
+	while(temp[i])
+	{
+		free(temp[i]);
+		i++;
+	}
+	free(temp);
+}
+
+char	*set_up_path(char *cmd, char *envp[])
+{
+	int		i;
+	char	**paths;
+	char	*check;
+	
+	i = 0;
+	while(ft_strncmp(envp[i], "PATH", 4))
+		i++;
+	paths = ft_split(envp[i] + 5, ':');
+	i = 0;
+	while(paths[i])
+	{
+		check = ft_strjoin(paths[i], cmd);
+		if (!access(check, X_OK))
+		{
+			two_d_free(paths);
+			return (check);
+		}
+		free(check);
+		i++;
+	}
+	two_d_free(paths);
+	return (NULL);
+}
+
+void	run_cmd(char *argv, char *envp[])
+{
+	char *cmd;
+	char *path;
+	char **temp;
+
+	temp = ft_split(argv, ' ');
+	cmd = ft_strjoin("/", temp[0]);
+	path = set_up_path(cmd, envp);
+	free(cmd);
+	if (!path)
+	{
+		two_d_free(temp);
+		return ; // path error
+	}
+	if(execve(path, temp, NULL) == -1)
+		return ; // excute error
+}
+
 void child_process(char *argv[], char *envp[], int *fd)
 {
 	int infile;
-	char **temp;
 
 	infile = open(argv[1], O_RDONLY, 0777);
 	if (infile == -1)
-		return ;
+		return ; // file error
 	if (dup2(fd[1], STDOUT_FILENO) == -1)
-		return ;
+		return ; // dup error
 	if (dup2(infile, STDIN_FILENO) == -1)
 		return ;
 	close(fd[0]);
-	temp = ft_split(argv[2], ' ');
-	int i = 0;
-	while(ft_strncmp(envp[i], "PATH", 4))
-		i++;
-	char *path = envp[i] + 5;
-	char **pathes = ft_split(path, ':');
-	i = 0;
-	char *cmd = ft_strjoin("/", temp[0]);
-	while(pathes[i])
-	{
-		char *check = ft_strjoin(pathes[i], cmd);
-		if (!access(check, X_OK))
-			execve(check, temp, NULL);
-		i++;
-	}
+	run_cmd(argv[2], envp);
 }
 
 void parent_process(char *argv[], char *envp[], int *fd)
 {
 	int outfile;
-	char **temp;
 
 	outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (outfile == -1)
-		return ;
+		return ; // file error
 	if (dup2(fd[0], STDIN_FILENO) == -1)
-		return ;
+		return ; // dup error
 	if (dup2(outfile, STDOUT_FILENO) == -1)
 		return ;
 	close(fd[1]);
-	temp = ft_split(argv[3], ' ');
-	int i = 0;
-	while(ft_strncmp(envp[i], "PATH", 4))
-		i++;
-	char *path = envp[i] + 5;
-	char **pathes = ft_split(path, ':');
-	i = 0;
-	char *cmd = ft_strjoin("/", temp[0]);
-	while(pathes[i])
-	{
-		char *check = ft_strjoin(pathes[i], cmd);
-		if (!access(check, X_OK))
-			execve(check, temp, NULL);
-		i++;
-	}
-	
+	run_cmd(argv[3], envp);
 }
 
 int main(int argc, char *argv[], char *envp[])
