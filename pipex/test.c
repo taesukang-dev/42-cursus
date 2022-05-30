@@ -16,23 +16,17 @@ void child_process(char *argv[], char *envp[], int *fd)
 	infile = open(argv[1], O_RDONLY, 0777);
 	if (infile == -1)
 		return ;
-	// if (dup2(fd[1], STDOUT_FILENO) == -1)
-	// 	return ;
-	// if (dup2(infile, STDIN_FILENO) == -1)
-	// 	return ;
-	
+	if (dup2(fd[1], STDOUT_FILENO) == -1)
+		return ;
+	if (dup2(infile, STDIN_FILENO) == -1)
+		return ;
+	close(fd[0]);
 	temp = ft_split(argv[2], ' ');
-	// temp[0];
-	for(int i = 0; temp[i]; i++)
-		printf("%s\n", temp[i]);
-	
 	int i = 0;
 	while(ft_strncmp(envp[i], "PATH", 4))
 		i++;
 	char *path = envp[i] + 5;
 	char **pathes = ft_split(path, ':');
-	// for(int i = 0; pathes[i]; i++)
-	// 	printf("%s\n", pathes[i]);
 	i = 0;
 	char *cmd = ft_strjoin("/", temp[0]);
 	while(pathes[i])
@@ -42,7 +36,37 @@ void child_process(char *argv[], char *envp[], int *fd)
 			execve(check, temp, NULL);
 		i++;
 	}
-	close(fd[0]);
+}
+
+void parent_process(char *argv[], char *envp[], int *fd)
+{
+	int outfile;
+	char **temp;
+
+	outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (outfile == -1)
+		return ;
+	if (dup2(fd[0], STDIN_FILENO) == -1)
+		return ;
+	if (dup2(outfile, STDOUT_FILENO) == -1)
+		return ;
+	close(fd[1]);
+	temp = ft_split(argv[3], ' ');
+	int i = 0;
+	while(ft_strncmp(envp[i], "PATH", 4))
+		i++;
+	char *path = envp[i] + 5;
+	char **pathes = ft_split(path, ':');
+	i = 0;
+	char *cmd = ft_strjoin("/", temp[0]);
+	while(pathes[i])
+	{
+		char *check = ft_strjoin(pathes[i], cmd);
+		if (!access(check, X_OK))
+			execve(check, temp, NULL);
+		i++;
+	}
+	
 }
 
 int main(int argc, char *argv[], char *envp[])
@@ -60,9 +84,6 @@ int main(int argc, char *argv[], char *envp[])
 	if (child == 0)
 		child_process(argv, envp, fd);
 	waitpid(child, NULL, 0);
-	
-	// char buf[30];
-	// read(fd[0], buf, 3);
-	// printf("\n%s\n", buf);
+	parent_process(argv, envp, fd);
 	return 0;
 }
