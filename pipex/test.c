@@ -1,39 +1,51 @@
 #include "pipex.h"
 
+// char *str[3];
+// str[0] = "ls";
+// str[1] = "-al";
+// str[2] = NULL;
+// execve("/bin/ls", str, NULL);
+
+// infile -> child process stdin으로 사용한다.
+// fd[1] -> stdout 으로 쓴다
+void child_process(char *argv[], char *envp[], int *fd)
+{
+	int infile;
+	char **temp;
+
+	infile = open(argv[1], O_RDONLY, 0777);
+	if (infile == -1)
+		return ;
+	if (dup2(fd[1], STDOUT_FILENO) == -1)
+		return ;
+	if (dup2(infile, STDIN_FILENO) == -1)
+		return ;
+	
+	temp = ft_split(argv[2], ' ');
+	// temp[0];
+	for(int i = 0; temp[i]; i++)
+		printf("%s\n", temp[i]);
+	close(fd[0]);
+}
+
 int main(int argc, char *argv[], char *envp[])
 {
 	int		fd[2];
 	pid_t	child;
 
-	// if (argc != 5)
-	// 	return 0;
-	
-	// if (argc == 5)
-	// {
-	// 	ipc_info->infile = argv[1];
-	// 	ipc_info->cmd[0].cmd = ft_split(argv[2], ' ');
-	// 	ipc_info->cmd[1].cmd = ft_split(argv[3], ' ');
-	// 	ipc_info->outfile = argv[4];
-	// }
-
-	// char *str[3];
-	// str[0] = "ls";
-	// str[1] = "-al";
-	// str[2] = NULL;
-	// execve("/bin/ls", str, NULL);
-
+	if (argc != 5)
+		return 0;
 	if (pipe(fd) == -1)
 		return 0;
 	child = fork();
 	if (child == -1)
 		return 0;
 	if (child == 0)
-	{
-		int test = open("./test.txt", O_WRONLY | O_CREAT | O_TRUNC);
-		if (dup2(test, STDOUT_FILENO) == -1)
-			printf("hi!");
-		printf("hhh");
-	}
-
+		child_process(argv, envp, fd);
+	waitpid(child, NULL, 0);
+	
+	char buf[30];
+	read(fd[0], buf, 3);
+	printf("\n%s\n", buf);
 	return 0;
 }
