@@ -23,9 +23,7 @@ all: $(NAME)
 
 $(NAME) : $(OBJS)
 	make -C $(LIBFT)
-	# cp libft/libft.a $(NAME)
-	# ar rcs $@ $?
-	$(CC) -o $(NAME) -L$(LIBFT) -lft $(OBJS)
+	$(CC) -o $(NAME) -L./$(LIBFT) -lft $(OBJS)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
