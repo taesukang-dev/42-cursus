@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include "./libft/libft.h"
 
-void	exit_trap(char *str);
+void	exit_trap(char *str, int sig);
 void	two_d_free(char **temp);
 char	*set_up_path(char *cmd, char *envp[]);
 void	run_cmd(char *argv, char *envp[]);

@@ -12,10 +12,10 @@
 
 #include "pipex.h"
 
-void	exit_trap(char *str)
+void	exit_trap(char *str, int sig)
 {
 	write(2, str, ft_strlen(str));
-	exit(1);
+	exit(sig);
 }
 
 void	two_d_free(char **temp)
@@ -64,14 +64,19 @@ void	run_cmd(char *argv, char *envp[])
 	char	**temp;
 
 	temp = ft_split(argv, ' ');
+	if (!access(temp[0], X_OK))
+	{
+		if (execve(temp[0], temp, envp) == -1)
+			exit_trap("excute error\n", 127);
+	}
 	cmd = ft_strjoin("/", temp[0]);
 	path = set_up_path(cmd, envp);
 	free(cmd);
 	if (!path)
 	{
 		two_d_free(temp);
-		exit_trap("path error\n");
+		exit_trap("command not found\n", 127);
 	}
-	if (execve(path, temp, NULL) == -1)
-		exit_trap("excute error\n");
+	if (execve(path, temp, envp) == -1)
+		exit_trap("excute error\n", 127);
 }
