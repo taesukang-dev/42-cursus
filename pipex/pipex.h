@@ -1,26 +1,18 @@
-# ifndef PIPEX_H
-#define PIPEX_H
+#ifndef PIPEX_H
+# define PIPEX_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/wait.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <sys/wait.h>
 # include <fcntl.h>
-#include "./libft/libft.h"
+# include "./libft/libft.h"
 
-// typedef struct s_cmd
-// {
-// 	char	**cmd;
-// 	int		slash;
-// } t_cmd;
-
-// typedef struct s_ipc
-// {
-// 	int		infile;
-// 	t_cmd	cmd[2];
-// 	int		pipes[2];
-// 	int		outfile;
-// 	char	**environ;
-// } t_ipc;
+void	exit_trap(char *str);
+void	two_d_free(char **temp);
+char	*set_up_path(char *cmd, char *envp[]);
+void	run_cmd(char *argv, char *envp[]);
+void	child_process(char *argv[], char *envp[], int *fd);
+void	parent_process(char *argv[], char *envp[], int *fd);
 
 #endif
