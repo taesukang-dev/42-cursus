@@ -1,5 +1,11 @@
 #include "pipex.h"
 
+void	exit_trap(char *str)
+{
+	write(2, str, ft_strlen(str));
+	exit(1);
+}
+
 void	two_d_free(char **temp)
 {
 	int	i;
@@ -52,10 +58,10 @@ void	run_cmd(char *argv, char *envp[])
 	if (!path)
 	{
 		two_d_free(temp);
-		return ; // path error
+		exit_trap("path error\n");
 	}
 	if(execve(path, temp, NULL) == -1)
-		return ; // excute error
+		exit_trap("excute error\n");
 }
 
 void child_process(char *argv[], char *envp[], int *fd)
@@ -64,11 +70,11 @@ void child_process(char *argv[], char *envp[], int *fd)
 
 	infile = open(argv[1], O_RDONLY, 0777);
 	if (infile == -1)
-		return ; // file error
+		exit_trap("file error\n");
 	if (dup2(fd[1], STDOUT_FILENO) == -1)
-		return ; // dup error
+		exit_trap("duplicate error\n");
 	if (dup2(infile, STDIN_FILENO) == -1)
-		return ;
+		exit_trap("duplicate error\n");
 	close(fd[0]);
 	run_cmd(argv[2], envp);
 }
@@ -79,11 +85,11 @@ void parent_process(char *argv[], char *envp[], int *fd)
 
 	outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (outfile == -1)
-		return ; // file error
+		exit_trap("file error\n");
 	if (dup2(fd[0], STDIN_FILENO) == -1)
-		return ; // dup error
+		exit_trap("duplicate error\n");
 	if (dup2(outfile, STDOUT_FILENO) == -1)
-		return ;
+		exit_trap("duplicate error\n");
 	close(fd[1]);
 	run_cmd(argv[3], envp);
 }
@@ -94,12 +100,12 @@ int main(int argc, char *argv[], char *envp[])
 	pid_t	child;
 
 	if (argc != 5)
-		return 0;
+		exit_trap("not enough arguments\n");
 	if (pipe(fd) == -1)
-		return 0;
+		exit_trap("pipe error\n");
 	child = fork();
 	if (child == -1)
-		return 0;
+		exit_trap("fork error\n");
 	if (child == 0)
 		child_process(argv, envp, fd);
 	waitpid(child, NULL, 0);
