@@ -7,3 +7,4 @@ yup, I'm a cadet @42seoul
 |   1    |     <a href="https://github.com/mtae616/42_cursus/tree/master/ft_printf">ft_printf</a>     |    C     |               va_arg               |     22. 05. 01     |
 |   1    |   <a href="https://github.com/mtae616/42_cursus/tree/master/Born2beroot">Born2beroot</a>   | Network |       Virtual machine, Linux, debian, etc...        |     22. 05. 12     |
 |	2	 | <a href="https://github.com/mtae616/42_cursus/tree/master/so_long">so_long</a> | C | X-window, color integer standard | 22. 05. 26 |
+| 2 |  <a href="https://github.com/mtae616/42_cursus/tree/master/pipex">pipex</a> | C | Linux pipe, redirection, multiprocessing | 22. 06. 03 |
