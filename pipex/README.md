@@ -2,6 +2,7 @@
 
 - linux pipe와 redirection을 구현하자!
 - 멀티 프로세싱 맛보기!
+- <a href="./subject.md">과제 전문</a>
 
 ## pipe <unistd.h>
 
