@@ -2,7 +2,7 @@ yup, I'm a cadet @42seoul
 
 | circle |                                          project                                           | language |               topic                | Date of completion |
 | :----: | :----------------------------------------------------------------------------------------: | :------: | :--------------------------------: | :----------------: |
-|   0    |         <a href="https://github.com/mtae616/42_cursus/tree/master/libft">Libft</a>         |    C     | Makefile, <br /> struct, <br /> restrict, static |    22. 03. 25.     |
+|   0    |         <a href="https://github.com/mtae616/42_cursus/tree/master/libft">Libft</a>         |    C     | Makefile, <br /> struct, <br /> restrict, <br /> static |    22. 03. 25.     |
 |   1    | <a href="https://github.com/mtae616/42_cursus/tree/master/get_next_line">get_next_line</a> |    C     |      File Descriptor, <br /> Static       |    22. 04. 11.     |
 |   1    |     <a href="https://github.com/mtae616/42_cursus/tree/master/ft_printf">ft_printf</a>     |    C     |               va_arg               |     22. 05. 01     |
 |   1    |   <a href="https://github.com/mtae616/42_cursus/tree/master/Born2beroot">Born2beroot</a>   | Network |       Virtual machine, <br /> Linux, <br /> debian, <br /> etc...        |     22. 05. 12     |
