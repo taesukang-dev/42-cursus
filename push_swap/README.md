@@ -27,3 +27,7 @@
 - malloc
 - free
 - exit
+
+- doubly linked list
+- commands
+- sorting
