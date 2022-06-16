@@ -23,8 +23,12 @@ int main(int argc, char *argv[])
 	temp2 = create_doubly_list();
 
 	init_doubly(temp, argv, argc);
-	command_pab(temp, temp2, PB);
+	init_doubly(temp2, argv, argc);
+	// command_pab(temp, temp2, PB);
 	// command_ss(temp, temp2);
+	// command_rab(temp, PA);
+	// command_rr(temp, temp2);
+	command_rrr(temp, temp2);
 	buf = temp->headerNode;
 	for(int i = 0; i < temp->currentElementCount; i++)
 	{
@@ -39,14 +43,6 @@ int main(int argc, char *argv[])
 		buf = buf->next;
 	}
 	printf("===============================================================\n");
-	
-	// command_sab(temp);
-	// buf = temp->headerNode;
-	// for(int i = 0; i < temp->currentElementCount; i++)
-	// {
-	// 	printf("%d \n", buf->data);
-	// 	buf = buf->next;
-	// }
 
 	return (0);
 }

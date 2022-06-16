@@ -49,3 +49,21 @@ t_DoublyListNode	*pop_dl(t_DoublyList *dList)
 	dList->currentElementCount -= 1;
 	return (buf);
 }
+
+t_DoublyListNode	*pop_right_dl(t_DoublyList *dList)
+{
+	t_DoublyListNode	*buf;
+
+	if (dList->currentElementCount == 0)
+		return (NULL);
+	buf = dList->tailNode;
+	dList->tailNode = dList->tailNode->prev;
+	if (dList->currentElementCount == 1)
+		dList->headerNode = NULL;
+	else
+		dList->tailNode->next = NULL;
+	buf->prev = NULL;
+	buf->next = NULL;
+	dList->currentElementCount -= 1;
+	return (buf);
+}
