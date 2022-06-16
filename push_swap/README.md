@@ -27,6 +27,8 @@
 - free
 - exit
 
+## todo
+
 - doubly linked list
 - commands
 - sorting
