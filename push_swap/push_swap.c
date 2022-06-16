@@ -20,13 +20,33 @@ int main(int argc, char *argv[])
 	t_DoublyListNode	*buf;
 	
 	temp = create_doubly_list();
+	temp2 = create_doubly_list();
+
 	init_doubly(temp, argv, argc);
+	command_pab(temp, temp2, PB);
+	// command_ss(temp, temp2);
 	buf = temp->headerNode;
 	for(int i = 0; i < temp->currentElementCount; i++)
 	{
 		printf("%d \n", buf->data);
 		buf = buf->next;
 	}
-	temp2 = create_doubly_list();
+	printf("===============================================================\n");
+	buf = temp2->headerNode;
+	for(int i = 0; i < temp2->currentElementCount; i++)
+	{
+		printf("%d \n", buf->data);
+		buf = buf->next;
+	}
+	printf("===============================================================\n");
+	
+	// command_sab(temp);
+	// buf = temp->headerNode;
+	// for(int i = 0; i < temp->currentElementCount; i++)
+	// {
+	// 	printf("%d \n", buf->data);
+	// 	buf = buf->next;
+	// }
+
 	return (0);
 }
