@@ -1,7 +1,6 @@
 # Keyword
 
 - algorithms
-- red black tree...? maybe
 - quick sort...?
 
 - s
