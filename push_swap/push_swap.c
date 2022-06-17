@@ -3,19 +3,6 @@
 // delete it later
 #include <stdio.h>
 
-void	init_doubly(t_DoublyList **dList, char *argv[], int argc)
-{
-	size_t	i;
-
-	*dList = create_doubly_list();
-	i = argc - 1;
-	while(i > 0)
-	{
-		add_dl_element(*dList, ft_atoi(argv[i]));
-		i--;
-	}
-}
-
 int main(int argc, char *argv[])
 {
 	t_DoublyList	*temp;

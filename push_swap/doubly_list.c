@@ -8,6 +8,30 @@ t_DoublyList	*create_doubly_list(void)
 	return (temp);
 }
 
+int	add_left_dl_element(t_DoublyList *dList, int data)
+{
+	t_DoublyListNode	*buf;
+	t_DoublyListNode	*new;
+
+	new = ft_calloc(1, sizeof(t_DoublyListNode));
+	if (!new)
+		return (0);
+	new->data = data;
+	if (dList->currentElementCount == 0)
+	{
+		dList->headerNode = new;
+		dList->tailNode = new;
+		dList->currentElementCount += 1;
+		return (1);
+	}
+	buf = dList->tailNode;
+	buf->next = new;
+	new->prev = buf;
+	dList->tailNode = new;
+	dList->currentElementCount += 1;
+	return (1);
+}
+
 int	add_dl_element(t_DoublyList *dList, int data)
 {
 	t_DoublyListNode	*buf;

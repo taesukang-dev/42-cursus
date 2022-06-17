@@ -32,9 +32,15 @@ typedef struct s_DoublyListType
 	t_DoublyListNode	*tailNode;
 } t_DoublyList;
 
+void	init_doubly(t_DoublyList **dList, char *argv[], int argc);
+int		my_atoi(const char *str);
+void	exit_trap();
+void	two_d_free(char **str);
+
 // stack using doubly list
 t_DoublyList		*create_doubly_list(void);
 int					add_dl_element(t_DoublyList *dList, int data);
+int					add_left_dl_element(t_DoublyList *dList, int data);
 t_DoublyListNode	*pop_dl(t_DoublyList *dList);
 t_DoublyListNode	*pop_right_dl(t_DoublyList *dList);
 
