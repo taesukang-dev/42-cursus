@@ -53,4 +53,7 @@ void	command_rr(t_DoublyList *a, t_DoublyList *b);
 void	command_rrab(t_DoublyList *dList, int flag);
 void	command_rrr(t_DoublyList *a, t_DoublyList *b);
 
+// sorting
+void	sorting(t_DoublyList *a, t_DoublyList *b);
+
 # endif
