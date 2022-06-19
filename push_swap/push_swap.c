@@ -11,6 +11,8 @@ int main(int argc, char *argv[])
 
 	init_doubly(&temp, argv, argc);
 	sorting(temp, temp2);
+	// command_sab(temp, SA);
+	// command_rrab(temp, RRA);
 	buf = temp->headerNode;
 	for(int i = 0; i < temp->currentElementCount; i++)
 	{

@@ -85,7 +85,7 @@ t_DoublyListNode	*pop_right_dl(t_DoublyList *dList)
 	if (dList->currentElementCount == 1)
 		dList->headerNode = NULL;
 	else
-		dList->tailNode->next = NULL;
+		dList->tailNode->next = NULL;	
 	buf->prev = NULL;
 	buf->next = NULL;
 	dList->currentElementCount -= 1;

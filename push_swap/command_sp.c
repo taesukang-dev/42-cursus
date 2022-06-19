@@ -3,12 +3,17 @@
 void	command_sab(t_DoublyList *dList, int flag)
 {
 	t_DoublyListNode	*temp;
+	t_DoublyListNode	*next;
 
 	temp = dList->headerNode;
-	dList->headerNode = temp->next;
-	temp->next = dList->headerNode->next;
+	next = dList->headerNode->next;
+	temp->prev = next;
+	dList->headerNode = next;
+	temp->next = next->next;
+	dList->headerNode->prev = NULL;
 	dList->headerNode->next = temp;
-	temp->prev = dList->headerNode;
+	if (temp->next == dList->tailNode)
+		dList->tailNode->prev = temp;
 	if (flag == SA)
 		write(1, "SA\n", 3);
 	else if (flag == SB)
