@@ -1,5 +1,11 @@
 #include "push_swap.h"
 
+void	sort_two_elements(t_DoublyList *a)
+{
+	if (a->headerNode->data > a->headerNode->next->data)
+		command_sab(a, SA);
+}
+
 void	sort_three_elements(t_DoublyList *a)
 {
 	int		head;
@@ -27,14 +33,17 @@ void	sort_three_elements(t_DoublyList *a)
 	}
 }
 
+void	sort_five_elements(t_DoublyList *a, t_DoublyList *b)
+{
+	
+}
+
 void	sorting(t_DoublyList *a, t_DoublyList *b)
 {
 	if (a->currentElementCount == 2)
-	{
-		if (a->headerNode->data > a->headerNode->next->data)
-			command_sab(a, SA);
-	}
+		sort_two_elements(a);
 	if (a->currentElementCount == 3)
 		sort_three_elements(a);
-		
+	if (a->currentElementCount == 5)
+		sort_five_elements(a, b);
 }

@@ -3,6 +3,9 @@
 
 # include "./libft/libft.h"
 
+// delete it later
+#include <stdio.h>
+
 # define SA 0
 # define SB 1
 # define SS 2
@@ -37,6 +40,10 @@ int		my_atoi(const char *str);
 void	exit_trap();
 void	two_d_free(char **str);
 
+// arr
+int	*init_sorted_arr(t_DoublyList *dList);
+int sort_arr(int *sorted_arr, int size);
+
 // stack using doubly list
 t_DoublyList		*create_doubly_list(void);
 int					add_dl_element(t_DoublyList *dList, int data);
@@ -55,5 +62,8 @@ void	command_rrr(t_DoublyList *a, t_DoublyList *b);
 
 // sorting
 void	sorting(t_DoublyList *a, t_DoublyList *b);
+void	sort_two_elements(t_DoublyList *a);
+void	sort_three_elements(t_DoublyList *a);
+void	sort_five_elements(t_DoublyList *a, t_DoublyList *b);
 
 # endif
