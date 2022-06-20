@@ -21,9 +21,9 @@ int	my_atoi(const char *str)
 		i++;
 	}
 	if (str[i])
-		exit_trap();
+		exit_trap(1);
 	if (result > 2147483647 && op == 1 || result > 2147483648 && op == -1)
-		exit_trap();
+		exit_trap(1);
 	return (result * op);
 }
 
@@ -53,7 +53,7 @@ void	init_doubly(t_DoublyList **dList, char *argv[], int argc)
 		temp = ft_split(argv[i], ' ');
 		j = 0;
 		if (!temp[j])
-			exit_trap();
+			exit_trap(1);
 		while(temp[j])
 		{
 			add_left_dl_element(*dList, my_atoi(temp[j]));
@@ -61,10 +61,12 @@ void	init_doubly(t_DoublyList **dList, char *argv[], int argc)
 		}
 		two_d_free(temp);
 	}
+	(*dList)->size = (*dList)->currentElementCount;
 }
 
-void	exit_trap()
+void	exit_trap(int flag)
 {
-	write(2, "Error\n", 6);
+	if (flag)
+		write(2, "Error\n", 6);
 	exit(1);
 }

@@ -33,17 +33,10 @@ void	sort_three_elements(t_DoublyList *a)
 	}
 }
 
-void	sort_five_elements(t_DoublyList *a, t_DoublyList *b)
-{
-	
-}
-
-void	sorting(t_DoublyList *a, t_DoublyList *b)
+void	sorting(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
 {
 	if (a->currentElementCount == 2)
 		sort_two_elements(a);
-	if (a->currentElementCount == 3)
+	else if (a->currentElementCount == 3)
 		sort_three_elements(a);
-	if (a->currentElementCount == 5)
-		sort_five_elements(a, b);
 }

@@ -31,13 +31,14 @@ typedef struct s_DoublyListNodeType
 typedef struct s_DoublyListType
 {
 	int					currentElementCount;
+	int					size;
 	t_DoublyListNode	*headerNode;
 	t_DoublyListNode	*tailNode;
 } t_DoublyList;
 
 void	init_doubly(t_DoublyList **dList, char *argv[], int argc);
 int		my_atoi(const char *str);
-void	exit_trap();
+void	exit_trap(int flag);
 void	two_d_free(char **str);
 
 // arr
@@ -61,9 +62,8 @@ void	command_rrab(t_DoublyList *dList, int flag);
 void	command_rrr(t_DoublyList *a, t_DoublyList *b);
 
 // sorting
-void	sorting(t_DoublyList *a, t_DoublyList *b);
+void	sorting(t_DoublyList *a, t_DoublyList *b, int *sorted_arr);
 void	sort_two_elements(t_DoublyList *a);
 void	sort_three_elements(t_DoublyList *a);
-void	sort_five_elements(t_DoublyList *a, t_DoublyList *b);
 
 # endif
