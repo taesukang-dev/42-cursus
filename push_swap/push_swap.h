@@ -48,7 +48,7 @@ int sort_arr(int *sorted_arr, int size);
 // stack using doubly list
 t_DoublyList		*create_doubly_list(void);
 int					add_dl_element(t_DoublyList *dList, int data);
-int					add_left_dl_element(t_DoublyList *dList, int data);
+int					add_right_dl_element(t_DoublyList *dList, int data);
 t_DoublyListNode	*pop_dl(t_DoublyList *dList);
 t_DoublyListNode	*pop_right_dl(t_DoublyList *dList);
 
@@ -65,5 +65,7 @@ void	command_rrr(t_DoublyList *a, t_DoublyList *b);
 void	sorting(t_DoublyList *a, t_DoublyList *b, int *sorted_arr);
 void	sort_two_elements(t_DoublyList *a);
 void	sort_three_elements(t_DoublyList *a);
+void	sort_push_swap(t_DoublyList *a, t_DoublyList *b, int *sorted_arr);
+void	split_stack(t_DoublyList *a, t_DoublyList *b, int *sorted_arr);
 
 # endif

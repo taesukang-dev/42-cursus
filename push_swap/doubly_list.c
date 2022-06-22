@@ -8,7 +8,7 @@ t_DoublyList	*create_doubly_list(void)
 	return (temp);
 }
 
-int	add_left_dl_element(t_DoublyList *dList, int data)
+int	add_right_dl_element(t_DoublyList *dList, int data)
 {
 	t_DoublyListNode	*buf;
 	t_DoublyListNode	*new;

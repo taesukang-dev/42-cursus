@@ -33,10 +33,17 @@ void	sort_three_elements(t_DoublyList *a)
 	}
 }
 
+void	sort_push_swap(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
+{
+	split_stack(a, b, sorted_arr);
+}
+
 void	sorting(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
 {
 	if (a->currentElementCount == 2)
 		sort_two_elements(a);
 	else if (a->currentElementCount == 3)
 		sort_three_elements(a);
+	else if (a->currentElementCount > 3)
+		sort_push_swap(a, b, sorted_arr);
 }

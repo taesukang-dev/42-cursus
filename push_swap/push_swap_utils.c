@@ -56,7 +56,7 @@ void	init_doubly(t_DoublyList **dList, char *argv[], int argc)
 			exit_trap(1);
 		while(temp[j])
 		{
-			add_left_dl_element(*dList, my_atoi(temp[j]));
+			add_right_dl_element(*dList, my_atoi(temp[j]));
 			j++;
 		}
 		two_d_free(temp);
