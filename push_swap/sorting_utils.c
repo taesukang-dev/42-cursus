@@ -16,7 +16,7 @@ void	split_stack(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
 		else
 		{
 			command_pab(a, b, PB);
-			if (a->headerNode->data < pivot1)
+			if (b->headerNode->data < pivot1)
 				command_rab(b, RB);
 		}
 		i--;
