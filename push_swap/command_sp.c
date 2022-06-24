@@ -14,16 +14,16 @@ void	command_sab(t_DoublyList *dList, int flag)
 	free(temp);
 	free(next);
 	if (flag == SA)
-		write(1, "SA\n", 3);
+		write(1, "sa\n", 3);
 	else if (flag == SB)
-		write(1, "SB\n", 3);
+		write(1, "sb\n", 3);
 }
 
 void	command_ss(t_DoublyList *a, t_DoublyList *b)
 {
 	command_sab(a, SS);
 	command_sab(b, SS);
-	write(1, "SS\n", 3);
+	write(1, "ss\n", 3);
 }
 
 void	command_pab(t_DoublyList *a, t_DoublyList *b, int flag)
@@ -35,13 +35,13 @@ void	command_pab(t_DoublyList *a, t_DoublyList *b, int flag)
 		buf = pop_dl(b);
 		add_dl_element(a, buf->data);
 		free(buf);
-		write(1, "PA\n", 3);
+		write(1, "pa\n", 3);
 	}
 	else if (flag == PB && a->currentElementCount != 0)
 	{
 		buf = pop_dl(a);
 		add_dl_element(b, buf->data);
 		free(buf);
-		write(1, "PB\n", 3);
+		write(1, "pb\n", 3);
 	}
 }
