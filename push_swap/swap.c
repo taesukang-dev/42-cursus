@@ -109,7 +109,7 @@ int is_bigger(int a, int b, int temp_a, int temp_b)
 void	rotate(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx)
 {
 	while (*a_idx && *b_idx)
-	{
+	{ // abs?
 		command_rr(a, b);
 		*a_idx = *a_idx - 1;
 		*b_idx = *b_idx - 1;
