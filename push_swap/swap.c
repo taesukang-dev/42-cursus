@@ -41,7 +41,7 @@ int stack_max(t_DoublyList *a)
 	int					i;
 
 	buf = a->headerNode;
-	i = 0;
+	i = -2147483648;
 	while (buf)
 	{
 		if (i < buf->data)
