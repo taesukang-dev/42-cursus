@@ -88,13 +88,3 @@ int stack_mid_idx(t_DoublyList *a, int b_val)
 	i += 1;
 	return (i);
 }
-
-int	get_idx(t_DoublyList *a, int b_val)
-{
-	if (stack_max(a) < b_val)
-		return stack_max_idx(a);
-	else if (stack_min(a) > b_val)
-		return stack_min_idx(a);
-	else
-		return stack_mid_idx(a, b_val);
-}
