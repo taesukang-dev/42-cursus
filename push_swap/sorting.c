@@ -42,6 +42,13 @@ void	sort_push_swap(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
 		sort_two_elements(a);
 	else if (a->currentElementCount == 3)
 		sort_three_elements(a);
+	while(b->currentElementCount)
+	{
+		// 가장 최소 값
+		// a의 어디에 들어갈지 정하고
+		// ra or rra
+		// push
+	}
 }
 
 void	sorting(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
