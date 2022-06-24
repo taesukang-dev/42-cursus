@@ -20,14 +20,14 @@ int main(int argc, char *argv[])
 		buf = buf->next;
 	}
 
-	printf("===========================\n");
+	// printf("===========================\n");
 
-	buf = temp2->headerNode;
-	for(int i = 0; i < temp2->currentElementCount; i++)
-	{
-		printf("%d \n", buf->data);
-		buf = buf->next;
-	}
+	// buf = temp2->headerNode;
+	// for(int i = 0; i < temp2->currentElementCount; i++)
+	// {
+	// 	printf("%d \n", buf->data);
+	// 	buf = buf->next;
+	// }
 
 	return (0);
 }

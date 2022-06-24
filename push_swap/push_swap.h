@@ -68,6 +68,9 @@ void	sort_three_elements(t_DoublyList *a);
 void	sort_push_swap(t_DoublyList *a, t_DoublyList *b, int *sorted_arr);
 void	split_stack(t_DoublyList *a, t_DoublyList *b, int *sorted_arr);
 
+// swap
 void	swap(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx);
+
+void	rotate(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx);
 
 # endif

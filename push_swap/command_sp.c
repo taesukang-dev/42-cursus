@@ -5,15 +5,14 @@ void	command_sab(t_DoublyList *dList, int flag)
 	t_DoublyListNode	*temp;
 	t_DoublyListNode	*next;
 
-	temp = dList->headerNode;
-	next = dList->headerNode->next;
-	temp->prev = next;
-	dList->headerNode = next;
-	temp->next = next->next;
-	dList->headerNode->prev = NULL;
-	dList->headerNode->next = temp;
-	if (temp->next == dList->tailNode)
-		dList->tailNode->prev = temp;
+	if (dList->currentElementCount < 2)
+		return ;
+	temp = pop_dl(dList);
+	next = pop_dl(dList);
+	add_dl_element(dList, temp->data);
+	add_dl_element(dList, next->data);
+	free(temp);
+	free(next);
 	if (flag == SA)
 		write(1, "SA\n", 3);
 	else if (flag == SB)

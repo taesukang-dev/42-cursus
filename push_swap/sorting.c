@@ -49,11 +49,9 @@ void	sort_push_swap(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
 	{
 		a_idx = 0;
 		b_idx = 0;
-		swap(a, b, a_idx, b_idx);
-		// 가장 최소 swap 값
-		// a의 어디에 들어갈지 정하고
-		// ra or rra
-		// push
+		swap(a, b, &a_idx, &b_idx);
+		rotate(a, b, &a_idx, &b_idx);
+		command_pab(a, b, PA);
 	}
 }
 
