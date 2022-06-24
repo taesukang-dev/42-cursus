@@ -70,6 +70,13 @@ void	split_stack(t_DoublyList *a, t_DoublyList *b, int *sorted_arr);
 
 // swap
 void	swap(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx);
+int		get_idx(t_DoublyList *a, int b_val);
+int		stack_max_idx(t_DoublyList *a);
+int		stack_mid_idx(t_DoublyList *a, int b_val);
+int		stack_min(t_DoublyList *a);
+int		stack_min_idx(t_DoublyList *a);
+int		stack_max(t_DoublyList *a);
+
 
 void	rotate(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx);
 
