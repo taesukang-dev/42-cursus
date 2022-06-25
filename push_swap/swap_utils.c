@@ -80,7 +80,7 @@ int stack_mid_idx(t_DoublyList *a, int b_val)
 	i = 0;
 	while(buf)
 	{
-		if (buf->data < b_val && b_val < buf->next->data)
+		if ((buf->data < b_val && !buf->next) || (buf->data < b_val && b_val < buf->next->data))
 			break ;
 		i++;
 		buf = buf->next;

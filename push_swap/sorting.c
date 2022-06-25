@@ -33,6 +33,35 @@ void	sort_three_elements(t_DoublyList *a)
 	}
 }
 
+void	end_sort_up(t_DoublyList *a)
+{
+	int					i;
+	int					min;
+	t_DoublyListNode	*buf;
+
+	min = stack_min(a);
+	buf = a->headerNode;
+	i = 0;
+	while(buf)
+	{
+		if (buf->data == min)
+			break ;
+		buf = buf->next;
+	}
+	while (buf)
+	{
+		i += 1;
+		buf = buf->next;
+	}
+	if (i == a->size)
+		return ;
+	while(i)
+	{
+		command_rrab(a, RRA);
+		i -= 1;
+	}
+}
+
 void	sort_push_swap(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
 {
 	int	a_idx;
@@ -53,6 +82,7 @@ void	sort_push_swap(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
 		rotate(a, b, &a_idx, &b_idx);
 		command_pab(a, b, PA);
 	}
+	end_sort_up(a);
 }
 
 void	sorting(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
