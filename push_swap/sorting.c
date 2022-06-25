@@ -55,6 +55,8 @@ void	end_sort_up(t_DoublyList *a)
 	}
 	if (i == a->size)
 		return ;
+	// if (i > a->size / 2)
+	// 	i = a->size - i;
 	while(i)
 	{
 		command_rrab(a, RRA);
