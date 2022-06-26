@@ -22,7 +22,7 @@ int	my_atoi(const char *str)
 	}
 	if (str[i])
 		exit_trap(1);
-	if (result > 2147483647 && op == 1 || result > 2147483648 && op == -1)
+	if ((result > 2147483647 && op == 1) || (result > 2147483648 && op == -1))
 		exit_trap(1);
 	return (result * op);
 }
@@ -42,9 +42,9 @@ void	two_d_free(char **str)
 
 void	init_doubly(t_DoublyList **dList, char *argv[], int argc)
 {
-	size_t	i;
-	size_t	j;
-	char **temp;
+	int		i;
+	int		j;
+	char	**temp;
 
 	*dList = create_doubly_list();
 	i = 0;

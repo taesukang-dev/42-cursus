@@ -4,7 +4,7 @@ int *init_sorted_arr(t_DoublyList *dList)
 {
 	int					*temp;
 	t_DoublyListNode	*buf;
-	size_t				i;
+	int					i;
 
 	temp = ft_calloc(dList->currentElementCount, sizeof(int));
 	buf = dList->headerNode;
@@ -22,9 +22,9 @@ int *init_sorted_arr(t_DoublyList *dList)
 
 int	sort_arr(int *sorted_arr, int size)
 {
-	size_t	i;
-	size_t	j;
-	size_t	cnt;
+	int		i;
+	int		j;
+	int		cnt;
 	int		temp;
 
 	i = -1;
