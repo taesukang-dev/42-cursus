@@ -32,6 +32,8 @@ int	stack_min_idx(t_DoublyList *a)
 		i++;
 		buf = buf->next;
 	}
+	if (i > a->currentElementCount / 2)
+		i = (a->currentElementCount - i) * -1;
 	return (i);
 }
 
@@ -68,6 +70,8 @@ int	stack_max_idx(t_DoublyList *a)
 		buf = buf->next;
 	}
 	i += 1;
+	if (i > a->currentElementCount / 2)
+		i = (a->currentElementCount - i) * -1;
 	return (i);
 }
 
@@ -86,5 +90,7 @@ int stack_mid_idx(t_DoublyList *a, int b_val)
 		buf = buf->next;
 	}
 	i += 1;
+	if (i > a->currentElementCount / 2)
+		i = (a->currentElementCount - i) * -1;
 	return (i);
 }

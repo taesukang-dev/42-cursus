@@ -77,7 +77,9 @@ int		stack_min(t_DoublyList *a);
 int		stack_min_idx(t_DoublyList *a);
 int		stack_max(t_DoublyList *a);
 
-
+// rotate
 void	rotate(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx);
+
+
 
 # endif

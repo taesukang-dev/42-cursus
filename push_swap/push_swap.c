@@ -13,12 +13,12 @@ int main(int argc, char *argv[])
 	sorted_arr = init_sorted_arr(temp);
 	sorting(temp, temp2, sorted_arr);
 	
-	// buf = temp->headerNode;
-	// for(int i = 0; i < temp->currentElementCount; i++)
-	// {
-	// 	printf("%d \n", buf->data);
-	// 	buf = buf->next;
-	// }
+	buf = temp->headerNode;
+	for(int i = 0; i < temp->currentElementCount; i++)
+	{
+		printf("%d \n", buf->data);
+		buf = buf->next;
+	}
 
 	// printf("===========================\n");
 

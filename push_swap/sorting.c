@@ -36,31 +36,17 @@ void	sort_three_elements(t_DoublyList *a)
 void	end_sort_up(t_DoublyList *a)
 {
 	int					i;
-	int					min;
-	t_DoublyListNode	*buf;
 
-	min = stack_min(a);
-	buf = a->headerNode;
-	i = 0;
-	while(buf)
+	i = stack_min_idx(a);
+	while (i > 0)
 	{
-		if (buf->data == min)
-			break ;
-		buf = buf->next;
+		command_rab(a, RA);
+		i -= 1;
 	}
-	while (buf)
-	{
-		i += 1;
-		buf = buf->next;
-	}
-	if (i == a->size)
-		return ;
-	// if (i > a->size / 2)
-	// 	i = a->size - i;
-	while(i)
+	while (i < 0)
 	{
 		command_rrab(a, RRA);
-		i -= 1;
+		i += 1;
 	}
 }
 
