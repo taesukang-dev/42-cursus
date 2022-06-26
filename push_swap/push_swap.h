@@ -80,6 +80,4 @@ int		stack_max(t_DoublyList *a);
 // rotate
 void	rotate(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx);
 
-
-
 # endif
