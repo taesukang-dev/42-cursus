@@ -27,8 +27,7 @@ void	rotate_same(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx)
 {
 	while (*a_idx && *b_idx && (0 < *a_idx && 0 < *b_idx))
 	{
-		command_rr(a, b);
-		*a_idx = *a_idx - 1;
+		command_rr(a, b);		*a_idx = *a_idx - 1;
 		*b_idx = *b_idx - 1;
 	}
 	while (*a_idx && *b_idx && (0 > *a_idx && 0 > *b_idx))
@@ -39,38 +38,29 @@ void	rotate_same(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx)
 	}
 }
 
-void	rotate_a(t_DoublyList *a, int a_idx)
+void	rotate_one(t_DoublyList *dList, int idx, int flag)
 {
-	while (a_idx > 0)
+	while (idx > 0)
 	{
-		command_rab(a, RA);
-		a_idx -= 1;
+		if (flag)
+			command_rab(dList, RA);
+		else	
+			command_rab(dList, RB);
+		idx -= 1;
 	}
-	while (a_idx < 0)
+	while (idx < 0)
 	{
-		command_rrab(a, RRA);
-		a_idx += 1;
+		if (flag)
+			command_rrab(dList, RRA);
+		else
+			command_rrab(dList, RRB);
+		idx += 1;
 	}
-}
-
-void	rotate_b(t_DoublyList *b, int b_idx)
-{
-	while (b_idx > 0)
-	{
-		command_rab(b, RB);
-		b_idx -= 1;
-	}
-	while (b_idx < 0)
-	{
-		command_rrab(b, RRB);
-		b_idx += 1;
-	}
-	
 }
 
 void	rotate(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx)
 {
 	rotate_same(a, b, a_idx, b_idx);
-	rotate_a(a, *a_idx);
-	rotate_b(b, *b_idx);
+	rotate_one(a, *a_idx, 1);
+	rotate_one(b, *b_idx, 0);
 }
