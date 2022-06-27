@@ -23,7 +23,7 @@ void	split_stack(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
 	}
 }
 
-void	rotate_same(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx)
+void	rotate_many(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx)
 {
 	while (*a_idx && *b_idx && (0 < *a_idx && 0 < *b_idx))
 	{
@@ -60,7 +60,7 @@ void	rotate_one(t_DoublyList *dList, int idx, int flag)
 
 void	rotate(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx)
 {
-	rotate_same(a, b, a_idx, b_idx);
+	rotate_many(a, b, a_idx, b_idx);
 	rotate_one(a, *a_idx, 1);
 	rotate_one(b, *b_idx, 0);
 }
