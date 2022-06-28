@@ -1,4 +1,4 @@
-CC = gcc
+CC = gcc #cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 LIBFT = libft
