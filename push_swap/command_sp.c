@@ -9,7 +9,9 @@ void	command_sab(t_DoublyList *dList, int flag)
 		return ;
 	temp = pop_dl(dList);
 	next = pop_dl(dList);
-	if (!add_dl_element(dList, temp->data) || !add_dl_element(dList, next->data))
+	if (!add_dl_element(dList, temp->data))
+		exit_trap(0);
+	if (!add_dl_element(dList, next->data))
 		exit_trap(0);
 	free(temp);
 	free(next);
