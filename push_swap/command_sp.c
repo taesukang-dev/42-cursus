@@ -9,8 +9,8 @@ void	command_sab(t_DoublyList *dList, int flag)
 		return ;
 	temp = pop_dl(dList);
 	next = pop_dl(dList);
-	add_dl_element(dList, temp->data);
-	add_dl_element(dList, next->data);
+	if (!add_dl_element(dList, temp->data) || !add_dl_element(dList, next->data))
+		exit_trap(0);
 	free(temp);
 	free(next);
 	if (flag == SA)
@@ -33,14 +33,16 @@ void	command_pab(t_DoublyList *a, t_DoublyList *b, int flag)
 	if (flag == PA && b->currentElementCount != 0)
 	{
 		buf = pop_dl(b);
-		add_dl_element(a, buf->data);
+		if (!add_dl_element(a, buf->data))
+			exit_trap(0);
 		free(buf);
 		write(1, "pa\n", 3);
 	}
 	else if (flag == PB && a->currentElementCount != 0)
 	{
 		buf = pop_dl(a);
-		add_dl_element(b, buf->data);
+		if (!add_dl_element(b, buf->data))
+			exit_trap(0);
 		free(buf);
 		write(1, "pb\n", 3);
 	}

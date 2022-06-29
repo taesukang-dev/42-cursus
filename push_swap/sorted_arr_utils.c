@@ -7,6 +7,8 @@ int *init_sorted_arr(t_DoublyList *dList)
 	int					i;
 
 	temp = ft_calloc(dList->currentElementCount, sizeof(int));
+	if (!temp)
+		exit_trap(0);
 	buf = dList->headerNode;
 	i = 0;
 	while (i < dList->currentElementCount)

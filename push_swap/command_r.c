@@ -7,7 +7,8 @@ void	command_rab(t_DoublyList *dList, int flag)
 	if (dList->currentElementCount < 2)
 		return ;
 	temp = pop_dl(dList);
-	add_right_dl_element(dList, temp->data);
+	if (!add_right_dl_element(dList, temp->data))
+		exit_trap(0);
 	free(temp);
 	if (flag == RA)
 		write(1, "ra\n", 3);
@@ -29,7 +30,8 @@ void	command_rrab(t_DoublyList *dList, int flag)
 	if (dList->currentElementCount < 2)
 		return ;
 	temp = pop_right_dl(dList);
-	add_dl_element(dList, temp->data);
+	if (!add_dl_element(dList, temp->data))
+		exit_trap(0);
 	free(temp);
 	if (flag == RRA)
 		write(1, "rra\n", 4);

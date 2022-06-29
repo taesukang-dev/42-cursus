@@ -27,7 +27,8 @@ void	rotate_many(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx)
 {
 	while (*a_idx && *b_idx && (0 < *a_idx && 0 < *b_idx))
 	{
-		command_rr(a, b);		*a_idx = *a_idx - 1;
+		command_rr(a, b);
+		*a_idx = *a_idx - 1;
 		*b_idx = *b_idx - 1;
 	}
 	while (*a_idx && *b_idx && (0 > *a_idx && 0 > *b_idx))
