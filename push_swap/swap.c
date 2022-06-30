@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 15:24:06 by tkang             #+#    #+#             */
+/*   Updated: 2022/06/30 15:24:07 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int is_bigger(int a, int b, int temp_a, int temp_b)
+int	is_bigger(int a, int b, int temp_a, int temp_b)
 {
 	if (a < 0)
 		a *= -1;
@@ -18,11 +30,11 @@ int is_bigger(int a, int b, int temp_a, int temp_b)
 int	get_idx(t_DoublyList *a, int b_val)
 {
 	if (stack_max(a) < b_val)
-		return stack_max_idx(a);
+		return (stack_max_idx(a));
 	else if (stack_min(a) > b_val)
-		return stack_min_idx(a);
+		return (stack_min_idx(a));
 	else
-		return stack_mid_idx(a, b_val);
+		return (stack_mid_idx(a, b_val));
 }
 
 void	swap(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx)
@@ -33,12 +45,12 @@ void	swap(t_DoublyList *a, t_DoublyList *b, int *a_idx, int *b_idx)
 	int					temp_b;
 
 	i = 0;
-	buf = b->headerNode;
-	while(i < b->currentElementCount)
+	buf = b->head;
+	while (i < b->cnt)
 	{
 		temp_a = get_idx(a, buf->data);
-		if (i > b->currentElementCount / 2)
-			temp_b = (b->currentElementCount - i) * -1;
+		if (i > b->cnt / 2)
+			temp_b = (b->cnt - i) * -1;
 		else
 			temp_b = i;
 		if (i == 0 || is_bigger(*a_idx, *b_idx, temp_a, temp_b))

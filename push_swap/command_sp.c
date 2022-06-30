@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command_sp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 15:12:38 by tkang             #+#    #+#             */
+/*   Updated: 2022/06/30 15:12:39 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	command_sab(t_DoublyList *dList, int flag)
@@ -5,7 +17,7 @@ void	command_sab(t_DoublyList *dList, int flag)
 	t_DoublyListNode	*temp;
 	t_DoublyListNode	*next;
 
-	if (dList->currentElementCount < 2)
+	if (dList->cnt < 2)
 		return ;
 	temp = pop_dl(dList);
 	next = pop_dl(dList);
@@ -32,7 +44,7 @@ void	command_pab(t_DoublyList *a, t_DoublyList *b, int flag)
 {
 	t_DoublyListNode	*buf;
 
-	if (flag == PA && b->currentElementCount != 0)
+	if (flag == PA && b->cnt != 0)
 	{
 		buf = pop_dl(b);
 		if (!add_dl_element(a, buf->data))
@@ -40,7 +52,7 @@ void	command_pab(t_DoublyList *a, t_DoublyList *b, int flag)
 		free(buf);
 		write(1, "pa\n", 3);
 	}
-	else if (flag == PB && a->currentElementCount != 0)
+	else if (flag == PB && a->cnt != 0)
 	{
 		buf = pop_dl(a);
 		if (!add_dl_element(b, buf->data))

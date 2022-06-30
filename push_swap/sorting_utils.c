@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 15:21:48 by tkang             #+#    #+#             */
+/*   Updated: 2022/06/30 15:21:48 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	split_stack(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
@@ -9,14 +21,14 @@ void	split_stack(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
 	pivot1 = sorted_arr[a->size / 3];
 	pivot2 = sorted_arr[(a->size * 2) / 3];
 	i = a->size;
-	while(i)
+	while (i)
 	{
-		if (a->headerNode->data >= pivot2)
+		if (a->head->data >= pivot2)
 			command_rab(a, RA);
 		else
 		{
 			command_pab(a, b, PB);
-			if (b->headerNode->data < pivot1)
+			if (b->head->data < pivot1)
 				command_rab(b, RB);
 		}
 		i--;
@@ -45,7 +57,7 @@ void	rotate_one(t_DoublyList *dList, int idx, int flag)
 	{
 		if (flag)
 			command_rab(dList, RA);
-		else	
+		else
 			command_rab(dList, RB);
 		idx -= 1;
 	}

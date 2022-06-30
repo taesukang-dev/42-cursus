@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   doubly_list.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 15:12:51 by tkang             #+#    #+#             */
+/*   Updated: 2022/06/30 15:12:52 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_DoublyList	*create_doubly_list(void)
@@ -17,18 +29,18 @@ int	add_right_dl_element(t_DoublyList *dList, int data)
 	if (!new)
 		return (0);
 	new->data = data;
-	if (dList->currentElementCount == 0)
+	if (dList->cnt == 0)
 	{
-		dList->headerNode = new;
-		dList->tailNode = new;
-		dList->currentElementCount += 1;
+		dList->head = new;
+		dList->tail = new;
+		dList->cnt += 1;
 		return (1);
 	}
-	buf = dList->tailNode;
+	buf = dList->tail;
 	buf->next = new;
 	new->prev = buf;
-	dList->tailNode = new;
-	dList->currentElementCount += 1;
+	dList->tail = new;
+	dList->cnt += 1;
 	return (1);
 }
 
@@ -41,18 +53,18 @@ int	add_dl_element(t_DoublyList *dList, int data)
 	if (!new)
 		return (0);
 	new->data = data;
-	if (dList->currentElementCount == 0)
+	if (dList->cnt == 0)
 	{
-		dList->headerNode = new;
-		dList->tailNode = new;
-		dList->currentElementCount += 1;
+		dList->head = new;
+		dList->tail = new;
+		dList->cnt += 1;
 		return (1);
 	}
-	buf = dList->headerNode;
+	buf = dList->head;
 	buf->prev = new;
 	new->next = buf;
-	dList->headerNode = new;
-	dList->currentElementCount += 1;
+	dList->head = new;
+	dList->cnt += 1;
 	return (1);
 }
 
@@ -60,17 +72,17 @@ t_DoublyListNode	*pop_dl(t_DoublyList *dList)
 {
 	t_DoublyListNode	*buf;
 
-	if (dList->currentElementCount == 0)
+	if (dList->cnt == 0)
 		return (NULL);
-	buf = dList->headerNode;
-	dList->headerNode = dList->headerNode->next;
-	if (dList->currentElementCount == 1)
-		dList->tailNode = NULL;
+	buf = dList->head;
+	dList->head = dList->head->next;
+	if (dList->cnt == 1)
+		dList->tail = NULL;
 	else
-		dList->headerNode->prev = NULL;
+		dList->head->prev = NULL;
 	buf->prev = NULL;
 	buf->next = NULL;
-	dList->currentElementCount -= 1;
+	dList->cnt -= 1;
 	return (buf);
 }
 
@@ -78,16 +90,16 @@ t_DoublyListNode	*pop_right_dl(t_DoublyList *dList)
 {
 	t_DoublyListNode	*buf;
 
-	if (dList->currentElementCount == 0)
+	if (dList->cnt == 0)
 		return (NULL);
-	buf = dList->tailNode;
-	dList->tailNode = dList->tailNode->prev;
-	if (dList->currentElementCount == 1)
-		dList->headerNode = NULL;
+	buf = dList->tail;
+	dList->tail = dList->tail->prev;
+	if (dList->cnt == 1)
+		dList->head = NULL;
 	else
-		dList->tailNode->next = NULL;	
+		dList->tail->next = NULL;
 	buf->prev = NULL;
 	buf->next = NULL;
-	dList->currentElementCount -= 1;
+	dList->cnt -= 1;
 	return (buf);
 }

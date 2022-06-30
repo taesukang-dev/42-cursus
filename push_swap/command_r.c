@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command_r.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 15:12:20 by tkang             #+#    #+#             */
+/*   Updated: 2022/06/30 15:12:21 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	command_rab(t_DoublyList *dList, int flag)
 {
 	t_DoublyListNode	*temp;
 
-	if (dList->currentElementCount < 2)
+	if (dList->cnt < 2)
 		return ;
 	temp = pop_dl(dList);
 	if (!add_right_dl_element(dList, temp->data))
@@ -27,7 +39,7 @@ void	command_rrab(t_DoublyList *dList, int flag)
 {
 	t_DoublyListNode	*temp;
 
-	if (dList->currentElementCount < 2)
+	if (dList->cnt < 2)
 		return ;
 	temp = pop_right_dl(dList);
 	if (!add_dl_element(dList, temp->data))

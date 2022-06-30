@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 15:22:32 by tkang             #+#    #+#             */
+/*   Updated: 2022/06/30 15:22:33 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sort_two_elements(t_DoublyList *a)
 {
-	if (a->headerNode->data > a->headerNode->next->data)
+	if (a->head->data > a->head->next->data)
 		command_sab(a, SA);
 }
 
@@ -12,9 +24,9 @@ void	sort_three_elements(t_DoublyList *a)
 	int		bottom;
 	int		middle;
 
-	head = a->headerNode->data;
-	bottom = a->tailNode->data;
-	middle = a->headerNode->next->data;
+	head = a->head->data;
+	bottom = a->tail->data;
+	middle = a->head->next->data;
 	if (head > middle && bottom > head && middle < bottom)
 		command_sab(a, SA);
 	if (head > middle && bottom < head && bottom > middle)
@@ -56,13 +68,13 @@ void	sort_push_swap(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
 	int	b_idx;
 
 	split_stack(a, b, sorted_arr);
-	while(a->currentElementCount > 3)
+	while (a->cnt > 3)
 		command_pab(a, b, PB);
-	if (a->currentElementCount == 2)
+	if (a->cnt == 2)
 		sort_two_elements(a);
-	else if (a->currentElementCount == 3)
+	else if (a->cnt == 3)
 		sort_three_elements(a);
-	while(b->currentElementCount)
+	while (b->cnt)
 	{
 		a_idx = 0;
 		b_idx = 0;
@@ -75,10 +87,10 @@ void	sort_push_swap(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
 
 void	sorting(t_DoublyList *a, t_DoublyList *b, int *sorted_arr)
 {
-	if (a->currentElementCount == 2)
+	if (a->cnt == 2)
 		sort_two_elements(a);
-	else if (a->currentElementCount == 3)
+	else if (a->cnt == 3)
 		sort_three_elements(a);
-	else if (a->currentElementCount > 3)
+	else if (a->cnt > 3)
 		sort_push_swap(a, b, sorted_arr);
 }

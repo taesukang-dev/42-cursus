@@ -1,23 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorted_arr_utils.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 15:21:12 by tkang             #+#    #+#             */
+/*   Updated: 2022/06/30 15:21:12 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int *init_sorted_arr(t_DoublyList *dList)
+int	*init_sorted_arr(t_DoublyList *dList)
 {
 	int					*temp;
 	t_DoublyListNode	*buf;
 	int					i;
 
-	temp = ft_calloc(dList->currentElementCount, sizeof(int));
+	temp = ft_calloc(dList->cnt, sizeof(int));
 	if (!temp)
 		exit_trap(0);
-	buf = dList->headerNode;
+	buf = dList->head;
 	i = 0;
-	while (i < dList->currentElementCount)
+	while (i < dList->cnt)
 	{
 		temp[i] = buf->data;
 		buf = buf->next;
 		i++;
 	}
-	if (!sort_arr(temp, dList->currentElementCount))
+	if (!sort_arr(temp, dList->cnt))
 		exit_trap(0);
 	return (temp);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 15:13:44 by tkang             #+#    #+#             */
+/*   Updated: 2022/06/30 15:13:45 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	my_atoi(const char *str)
@@ -32,7 +44,7 @@ void	two_d_free(char **str)
 	size_t	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		free(str[i]);
 		i++;
@@ -48,13 +60,13 @@ void	init_doubly(t_DoublyList **dList, char *argv[], int argc)
 
 	*dList = create_doubly_list();
 	i = 0;
-	while(++i < argc)
+	while (++i < argc)
 	{
 		temp = ft_split(argv[i], ' ');
 		j = 0;
 		if (!temp[j])
 			exit_trap(1);
-		while(temp[j])
+		while (temp[j])
 		{
 			if (!add_right_dl_element(*dList, my_atoi(temp[j])))
 				exit_trap(0);
@@ -62,7 +74,7 @@ void	init_doubly(t_DoublyList **dList, char *argv[], int argc)
 		}
 		two_d_free(temp);
 	}
-	(*dList)->size = (*dList)->currentElementCount;
+	(*dList)->size = (*dList)->cnt;
 }
 
 void	exit_trap(int flag)
