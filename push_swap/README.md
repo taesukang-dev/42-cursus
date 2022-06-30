@@ -1,7 +1,7 @@
 # Keyword
-
+- 스택 2개를 활용하여 오름차순 정렬하자!
+- <a href="https://github.com/mtae616/42_cursus/blob/master/push_swap/subject.md">과제 전문</a>
 - algorithms
-- quick sort...?
 
 - s
   - sa : a stack 가장 맨 위에 있는 2개 swap
@@ -18,17 +18,3 @@
   - rra : a stack 모든 원소들의 index 1만큼 내림, bottom은 top이 된다.
   - rrb : b stack 모든 원소들의 index 1만큼 내림, bottom은 top이 된다.
   - rrr : rra, rrb 동시 실행
-
-## allowed
-
-- write
-- read
-- malloc
-- free
-- exit
-
-## todo
-
-- doubly linked list
-- commands
-- sorting
