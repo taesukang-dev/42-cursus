@@ -8,3 +8,4 @@ yup, I'm a cadet @42seoul
 |   1    |   <a href="https://github.com/mtae616/42_cursus/tree/master/Born2beroot">Born2beroot</a>   | Network |       Virtual machine, <br /> Linux, <br /> debian, <br /> etc...        |     22. 05. 12     |
 |	2	 | <a href="https://github.com/mtae616/42_cursus/tree/master/so_long">so_long</a> | C | X-window, <br /> color integer standard | 22. 05. 26 |
 | 2 |  <a href="https://github.com/mtae616/42_cursus/tree/master/pipex">pipex</a> | C | Linux pipe, redirection, <br /> multiprocessing, <br /> blocking vs nonblocking vs async | 22. 06. 03 |
+| 2 | <a href="https://github.com/mtae616/42_cursus/tree/master/push_swap">push_swap</a> | C | Algorithms <br /> Data Structure | 22. 07. 02 |

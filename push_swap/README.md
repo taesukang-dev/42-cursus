@@ -2,6 +2,9 @@
 - 스택 2개를 활용하여 오름차순 정렬하자!
 - <a href="https://github.com/mtae616/42_cursus/blob/master/push_swap/subject.md">과제 전문</a>
 - algorithms
+	- <a href="https://github.com/mtae616/42DS-study/blob/master/sorting/8_sorting.pdf">Dual-Pivot Quick Sort</a>
+- 자료 구조
+	- <a href="https://github.com/mtae616/42DS-study/tree/master/list/doublylist">Doubly Linked List</a>
 
 - s
   - sa : a stack 가장 맨 위에 있는 2개 swap
