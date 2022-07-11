@@ -23,17 +23,39 @@
 <br />
 
 - 사용 가능 함수
-	- memset
-	- printf
-	- malloc
-	- free
-	- write
-	- usleep
-	- gettimeofday
-	- pthread_create
-	- pthread_detach
-	- pthread_join
-	- pthread_mutex_init
-	- pthread_mutex_destroy
-	- pthread_mutex_lock
-	- pthread_mutex_unlock
+	- string.h
+		- memset
+	- stdio.h
+		- printf
+	- stdlib
+		- malloc
+		- free
+		- write
+	- unistd.h
+		- usleep
+	- sys/time.h
+		- gettimeofday
+	- pthread.h
+		- pthread_create
+			- 쓰레드 생성
+			- pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine)(void *), void *arg);
+		- pthread_detach
+			- int pthread_join(pthread_t th, void **thread_return)
+			- 쓰레드가 종료되길 기다렸다가, 쓰레드가 종료되면 다음 명령어 진행
+			- blocking
+		- pthread_join
+			- join과 동일한 기능이지만, non blocking
+			- 반환값 처리 불가
+		- pthread_mutex_init
+			- pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutex_attr *attr)
+			- 첫 인자 mutex, 2번 째 인자 mutex 특성 변경, attr 사용 못하니 NULL
+		- pthread_mutex_destroy
+			- int pthread_mutex_destroy(pthread_mutex_t *mutex)
+			- mutex 삭제, 자원 돌려줌
+		- pthread_mutex_lock
+			- int pthread_mutex_lock(pthread_mutex_t *mutex)
+			- mutex lock
+			- 잠금을 얻을 수 있을 때까지 무한 대기
+		- pthread_mutex_unlock
+			- int pthread_mutex_unlock(pthread_mutex_t *mutex);
+			- mutex unlock
