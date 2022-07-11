@@ -2,6 +2,7 @@
 - process
 - thread
 - synchronous
+- cf) Consumer-Producer Problem, Readers-Writers Problem
 
 <br />
 
