@@ -62,3 +62,23 @@
 		- pthread_mutex_unlock
 			- int pthread_mutex_unlock(pthread_mutex_t *mutex);
 			- mutex unlock
+
+<br />
+
+- 젓가락을 공유하면서 race condition 발생
+- mutex, deadlock, starvation
+- 각 젓가락에 mutex 걸면 됨
+- 양쪽 젓가락이 available 할 때 집는다.
+- 홀수인 철학자는 왼쪽 -> 오른쪽 젓가락 집는다.
+- 짝수인 철학자는 오른쪽 -> 왼쪽 젓가락을 집는다.
+- 위의 해결법들은 deadlock 을 해결하진 못함
+- pickup() 젓가락 집기, putdown() 젓가락 내려놓기
+- 사람이 5명이면
+- int chopstick[5];
+- int chopstick[(i + 1) % 5]; 오른쪽
+- int chopstick[(i + 4) % 5]; 왼쪽
+- ac[1]; // philos
+- ac[2]; // ages
+- ac[3]; // time to eat
+- ac[4]; // time to sleep
+- ac[5]; // number of eat
