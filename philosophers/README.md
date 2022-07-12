@@ -42,11 +42,13 @@
 			- pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine)(void *), void *arg);
 		- pthread_detach
 			- int pthread_join(pthread_t th, void **thread_return)
+			- 인자로 받은 쓰레드를 부모 쓰레드로부터 독립시킴 (종료시 자동 리소스 해제)
 			- 쓰레드가 종료되길 기다렸다가, 쓰레드가 종료되면 다음 명령어 진행
 			- blocking
 		- pthread_join
 			- join과 동일한 기능이지만, non blocking
 			- 반환값 처리 불가
+			- pthread가 종료될 때까지 기다렸다가 종료될 때 자원 해제
 		- pthread_mutex_init
 			- pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutex_attr *attr)
 			- 첫 인자 mutex, 2번 째 인자 mutex 특성 변경, attr 사용 못하니 NULL
