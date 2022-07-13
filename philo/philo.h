@@ -1,5 +1,5 @@
-#ifndef PHILOSOPHERS_H
-#define PHILOSOPHERS_H
+#ifndef PHILO_H
+#define PHILO_H
 
 #include <unistd.h>
 #include <stdio.h>
@@ -12,5 +12,15 @@
 
 #define NUM_PHILS 5
 enum {THINKING, HUNGRY, EATING} state[NUM_PHILS];
+
+typedef struct s_philo
+{
+	int fork;
+	int eat_time;
+	int die_time;
+	int sleep_time;
+	int eat_cnt;
+} t_philo;
+
 
 #endif

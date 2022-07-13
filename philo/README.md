@@ -34,6 +34,7 @@
 		- write
 	- unistd.h
 		- usleep
+			- microsecond(1/1000)
 	- sys/time.h
 		- gettimeofday
 	- pthread.h
@@ -66,7 +67,7 @@
 <br />
 
 - 젓가락을 공유하면서 race condition 발생
-- mutex, deadlock, starvation
+- mutex -> deadlock, starvation
 - 각 젓가락에 mutex 걸면 됨
 - 양쪽 젓가락이 available 할 때 집는다.
 - 홀수인 철학자는 왼쪽 -> 오른쪽 젓가락 집는다.
