@@ -1,46 +1,54 @@
 #include "philosophers.h"
 
-pthread_mutex_t mutex;
-
-void *justPlus(void *data)
-{	
-	int num = *(int *)data;
-
-	pthread_mutex_init(&mutex, NULL);
-	pthread_mutex_lock(&mutex);
-	num += 1;
-	printf("hi! %d\n", num);
-
-	pthread_mutex_unlock(&mutex);
-	pthread_mutex_destroy(&mutex);
-	return ((void *)num);
+void exit_trap(int sig)
+{
+	printf("error occured\n");
+	exit(sig);
 }
 
-void *justMinus(void *data)
+int	my_atoi(const char *str)
 {
-	int num = *(int *)data;
+	size_t	i;
+	long	result;
+	long	op;
 
-	pthread_mutex_init(&mutex, NULL);
-	pthread_mutex_lock(&mutex);
-	num -= 1;
-	printf("hi! %d\n", num);
-
-	pthread_mutex_unlock(&mutex);
-	pthread_mutex_destroy(&mutex);
-	return ((void *)num);
+	i = 0;
+	result = 0;
+	op = 1;
+	while ((9 <= str[i] && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '-')
+		op = -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while ('0' <= str[i] && str[i] <= '9')
+	{
+		result = (result * 10) + (str[i] - '0');
+		i++;
+		if ((result > 2147483647 && op == 1) || (result > 2147483648 && op == -1))
+			exit_trap(1);
+	}
+	if (str[i])
+		exit_trap(1);
+	if (op == -1)
+		exit_trap(1);
+	return (result * op);
 }
 
 int main(int ac, char *av[])
 {
-	pthread_t thread;
-	// pthread_t philos[];
+	int i;
+	int *cmd;
 
-	for(int i = 0; i < NUM_PHILS; i++)
+	if (ac == 5 || ac == 6)
 	{
-		if(pthread_create(&thread, NULL, justPlus, (void *)&i) == -1)
-			printf("fail");
+		cmd = malloc(sizeof(int) * ac);
+		i = 1;
+		while (av[i])
+		{
+			cmd[i - 1] = my_atoi(av[i]);
+			i++;
+		}
 	}
-	for(int i = 0; i < NUM_PHILS; i++)
-		pthread_join(thread, NULL);
 	return 0;
 }
