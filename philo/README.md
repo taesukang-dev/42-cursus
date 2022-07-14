@@ -37,6 +37,9 @@
 			- microsecond(1/1000)
 	- sys/time.h
 		- gettimeofday
+			- tv_sec : 초
+			- tv_usec : 마이크로초
+			- 1000 micro = 1 milli
 	- pthread.h
 		- pthread_create
 			- 쓰레드 생성

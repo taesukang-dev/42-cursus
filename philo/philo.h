@@ -6,6 +6,7 @@
 #include <pthread.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/time.h>
 
 // #define THINKING 0
 // #define HUNGRY 1
@@ -16,12 +17,19 @@ enum {THINKING, HUNGRY, EATING} state[NUM_PHILS];
 
 typedef struct s_args
 {
-	int fork;
+	int philo_cnt;
+	pthread_mutex_t *fork;
 	int eat_time;
 	int die_time;
 	int sleep_time;
 	int eat_cnt;
 } t_args;
+
+typedef struct s_philo
+{
+	int philo;
+	int start_time;
+} t_philo;
 
 void	exit_trap(int sig);
 int		my_atoi(const char *str);
