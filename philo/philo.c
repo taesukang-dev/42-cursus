@@ -30,6 +30,7 @@ void init_philo(t_philo **philo, t_args *args)
 	i = 0;
 	while(i < num_phil)
 	{
+		(*philo)[i].args = args;
 		(*philo)[i].id = i;
 		(*philo)[i].status = THINKING;
 		(*philo)[i].left = i;
@@ -40,9 +41,33 @@ void init_philo(t_philo **philo, t_args *args)
 	}
 }
 
-void start_processing(t_philo **philo, t_args *args)
+void *test(void *data)
 {
+	t_philo	philo;
 
+	philo = *((t_philo *)data);
+	printf("%ld\n", philo.eat_time);
+	printf("%d\n", philo.args->philo_cnt);
+	return 0;
+}
+
+void start_processing(t_philo *philo, t_args *args)
+{
+	int i;
+
+	i = 0;
+	while(i < args->philo_cnt)
+	{
+		philo[i].eat_time = get_time();
+		pthread_create(&(philo[i].p_thread), NULL, test, &philo[i]);
+		i++;
+	}
+	i = 0;
+	while(i < args->philo_cnt)
+	{
+		pthread_join(philo[i].p_thread, NULL);
+		i++;
+	}
 }
 
 int main(int ac, char *av[])
@@ -55,7 +80,7 @@ int main(int ac, char *av[])
 		exit_trap(1);
 	init_args(&args, ac, av);
 	init_philo(&philo, &args);
-
+	start_processing(philo, &args);
 	// i = 0;
 	// while (i < args.philo_cnt)
 	// {

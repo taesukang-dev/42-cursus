@@ -14,23 +14,24 @@
 
 typedef struct s_args
 {
-	int philo_cnt;
+	int				philo_cnt;
 	pthread_mutex_t *fork;
-	int eat_time;
-	int die_time;
-	int sleep_time;
-	int eat_cnt;
+	int				eat_time;
+	int				die_time;
+	int				sleep_time;
+	int				eat_cnt;
 } t_args;
 
 typedef struct s_philo
 {
-	pthread_t *p_thread;
-	int	id;
-	int status;
-	int left;
-	int right;
-	long eat_time;
-	int eat_cnt;
+	t_args		*args;
+	pthread_t	p_thread;
+	int			id;
+	int			status;
+	int			left;
+	int			right;
+	long		eat_time;
+	int			eat_cnt;
 } t_philo;
 
 void	init_philo(t_philo **philo, t_args *args);
