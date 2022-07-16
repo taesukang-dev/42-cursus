@@ -8,12 +8,9 @@
 #include <string.h>
 #include <sys/time.h>
 
-// #define THINKING 0
-// #define HUNGRY 1
-// #define EATING 2
-
-#define NUM_PHILS 5
-enum {THINKING, HUNGRY, EATING} state[NUM_PHILS];
+#define THINKING 0
+#define HUNGRY 1
+#define EATING 2
 
 typedef struct s_args
 {
@@ -27,10 +24,19 @@ typedef struct s_args
 
 typedef struct s_philo
 {
-	int philo;
-	int start_time;
+	pthread_t *p_thread;
+	int	id;
+	int status;
+	int left;
+	int right;
+	long eat_time;
+	int eat_cnt;
 } t_philo;
 
+void	init_philo(t_philo **philo, t_args *args);
+void	init_args(t_args *args, int ac, char *av[]);
+
+long	get_time();
 void	exit_trap(int sig);
 int		my_atoi(const char *str);
 

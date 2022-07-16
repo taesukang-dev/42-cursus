@@ -32,3 +32,10 @@ int	my_atoi(const char *str)
 		exit_trap(1);
 	return (result * op);
 }
+
+long get_time()
+{
+	struct timeval now;
+	gettimeofday(&now, NULL);
+	return now.tv_sec * 1000 + now.tv_usec / 1000;
+}

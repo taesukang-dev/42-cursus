@@ -40,6 +40,14 @@
 			- tv_sec : 초
 			- tv_usec : 마이크로초
 			- 1000 micro = 1 milli
+			```C
+			struct timeval mytime;
+			
+			gettimeofday(&mytime, NULL);
+			long mls = mytime.tv_sec * 1000 + mytime.tv_usec / 1000;
+			printf("%ld", mls);
+			```
+
 	- pthread.h
 		- pthread_create
 			- 쓰레드 생성

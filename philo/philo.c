@@ -20,23 +20,54 @@ void init_args(t_args *args, int ac, char *av[])
 		args->eat_cnt = my_atoi(av[5]);
 }
 
+void init_philo(t_philo **philo, t_args *args)
+{
+	int i;
+	int num_phil;
+
+	num_phil = args->philo_cnt;
+	*philo = malloc(sizeof(t_philo) * args->philo_cnt);
+	i = 0;
+	while(i < num_phil)
+	{
+		(*philo)[i].id = i;
+		(*philo)[i].status = THINKING;
+		(*philo)[i].left = i;
+		(*philo)[i].right = (i + 1) % num_phil;
+		(*philo)[i].eat_time = 0;
+		(*philo)[i].eat_cnt = 0;
+		i++;
+	}
+}
+
+void start_processing(t_philo **philo, t_args *args)
+{
+
+}
+
 int main(int ac, char *av[])
 {
 	int i;
 	int *cmd;
 	t_args args;
-	struct timeval mytime;
+	t_philo *philo;
+	if (ac != 5 && ac != 6)
+		exit_trap(1);
+	init_args(&args, ac, av);
+	init_philo(&philo, &args);
 
-	// if (ac != 5 && ac != 6)
-	// 	exit_trap(1);
-	// init_args(&args, ac, av);
-	// printf("%d\n", args.fork);
-	// printf("%d\n", args.die_time);
-	// printf("%d\n", args.eat_time);
-	// printf("%d\n", args.sleep_time);
-	// printf("%d\n", args.eat_cnt);
+	// i = 0;
+	// while (i < args.philo_cnt)
+	// {
+	// 	pthread_create(&philo[i].philo, NULL, 함수, (void *)&i);
+	// 	i++;
+	// }
+	// i = 0;
+	// while (i < args.philo_cnt)
+	// {
+	// 	pthread_join(philo[i].philo, NULL);
+	// 	i++;
+	// }
 
-	gettimeofday(&mytime, NULL);
-	printf("%ld %ld", mytime.tv_sec, mytime.tv_usec / 1000);
 	return 0;
 }
