@@ -39,3 +39,44 @@ long get_time()
 	gettimeofday(&now, NULL);
 	return now.tv_sec * 1000 + now.tv_usec / 1000;
 }
+
+void init_args(t_args *args, int ac, char *av[])
+{
+	int i;
+
+	memset(args, 0, sizeof(t_args));
+	args->philo_cnt = my_atoi(av[1]);
+	args->fork = malloc(sizeof(pthread_mutex_t) * (args->philo_cnt));
+	i = 0;
+	while(i < args->philo_cnt)
+	{
+		pthread_mutex_init(&(args->fork[i]), NULL);
+		i++;
+	}
+	args->die_time = my_atoi(av[2]);
+	args->eat_time = my_atoi(av[3]);
+	args->sleep_time = my_atoi(av[4]);
+	if (ac == 6)
+		args->eat_cnt = my_atoi(av[5]);
+}
+
+void init_philo(t_philo **philo, t_args *args)
+{
+	int i;
+	int num_phil;
+
+	num_phil = args->philo_cnt;
+	*philo = malloc(sizeof(t_philo) * args->philo_cnt);
+	i = 0;
+	while(i < num_phil)
+	{
+		(*philo)[i].args = args;
+		(*philo)[i].id = i;
+		(*philo)[i].status = THINKING;
+		(*philo)[i].left = i;
+		(*philo)[i].right = (i + 1) % num_phil;
+		(*philo)[i].eat_time = 0;
+		(*philo)[i].eat_cnt = 0;
+		i++;
+	}
+}
