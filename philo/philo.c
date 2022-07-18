@@ -78,6 +78,7 @@ void start_processing(t_philo *philo, t_args *args)
 			pthread_create(&(philo[i].p_thread), NULL, routine_odd, &philo[i]);
 		else
 			pthread_create(&(philo[i].p_thread), NULL, routine, &philo[i]);
+		usleep(200);
 		i++;
 	}
 	i = 0;
