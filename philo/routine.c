@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-void printer(t_philo *philo, int id, char *msg)
+void	printer(t_philo *philo, int id, char *msg)
 {
 	pthread_mutex_lock(&(philo->args->print));
 	if (!philo->args->finish)
@@ -20,13 +20,13 @@ void printer(t_philo *philo, int id, char *msg)
 	pthread_mutex_unlock(&(philo->args->print));
 }
 
-void time_spend(long wait_time, t_args *args)
+void	time_spend(long wait_time, t_args *args)
 {
-	long start;
-	long now;
+	long	start;
+	long	now;
 
 	start = get_time();
-	while(!(args->finish))
+	while (!(args->finish))
 	{
 		now = get_time();
 		if ((now - start) >= wait_time)

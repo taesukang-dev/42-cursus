@@ -12,11 +12,11 @@
 
 #include "philo.h"
 
-void check_finish(t_philo *philo)
+void	check_finish(t_philo *philo)
 {
-	int i;
+	int	i;
 
-	while(!philo->args->finish)
+	while (!philo->args->finish)
 	{
 		if (philo->eat_cnt != 0 && philo->eat_cnt == philo->args->eat_cnt)
 		{
@@ -24,7 +24,7 @@ void check_finish(t_philo *philo)
 			break ;
 		}
 		i = 0;
-		while(i < philo->args->philo_cnt)
+		while (i < philo->args->philo_cnt)
 		{
 			if (get_time() - philo[i].eat_time >= philo->args->die_time)
 			{

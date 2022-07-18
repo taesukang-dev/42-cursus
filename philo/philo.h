@@ -59,8 +59,8 @@ void	eat_odd(t_philo *philo);
 void	sleeping(t_philo *philo);
 void	think(t_philo *philo);
 
-void time_spend(long wait_time, t_args *args);
+void	time_spend(long wait_time, t_args *args);
 
-void printer(t_philo *philo, int id, char *msg);
+void	printer(t_philo *philo, int id, char *msg);
 
 #endif
