@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkang <tkang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/18 14:09:10 by tkang             #+#    #+#             */
+/*   Updated: 2022/07/18 14:09:11 by tkang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-void exit_trap(int sig)
+void	exit_trap(int sig)
 {
 	printf("error occured\n");
 	exit(sig);
@@ -25,7 +37,8 @@ int	my_atoi(const char *str)
 	{
 		result = (result * 10) + (str[i] - '0');
 		i++;
-		if ((result > 2147483647 && op == 1) || (result > 2147483648 && op == -1))
+		if ((result > 2147483647 && op == 1) \
+			|| (result > 2147483648 && op == -1))
 			exit_trap(1);
 	}
 	if (str[i])
@@ -33,22 +46,23 @@ int	my_atoi(const char *str)
 	return (result * op);
 }
 
-long get_time()
+long	get_time(void)
 {
-	struct timeval now;
+	struct timeval	now;
+
 	gettimeofday(&now, NULL);
-	return now.tv_sec * 1000 + now.tv_usec / 1000;
+	return (now.tv_sec * 1000 + now.tv_usec / 1000);
 }
 
-void init_args(t_args *args, int ac, char *av[])
+void	init_args(t_args *args, int ac, char *av[])
 {
-	int i;
+	int	i;
 
 	memset(args, 0, sizeof(t_args));
 	args->philo_cnt = my_atoi(av[1]);
 	args->fork = malloc(sizeof(pthread_mutex_t) * (args->philo_cnt));
 	i = 0;
-	while(i < args->philo_cnt)
+	while (i < args->philo_cnt)
 	{
 		pthread_mutex_init(&(args->fork[i]), NULL);
 		i++;
@@ -60,19 +74,18 @@ void init_args(t_args *args, int ac, char *av[])
 		args->eat_cnt = my_atoi(av[5]);
 }
 
-void init_philo(t_philo **philo, t_args *args)
+void	init_philo(t_philo **philo, t_args *args)
 {
-	int i;
-	int num_phil;
+	int	i;
+	int	num_phil;
 
 	num_phil = args->philo_cnt;
 	*philo = malloc(sizeof(t_philo) * args->philo_cnt);
 	i = 0;
-	while(i < num_phil)
+	while (i < num_phil)
 	{
 		(*philo)[i].args = args;
 		(*philo)[i].id = i;
-		(*philo)[i].status = THINKING;
 		(*philo)[i].left = i;
 		(*philo)[i].right = (i + 1) % num_phil;
 		(*philo)[i].eat_time = 0;
