@@ -26,6 +26,7 @@ typedef struct s_philo
 {
 	t_args		*args;
 	pthread_t	p_thread;
+	long		start_time;
 	int			id;
 	int			status;
 	int			left;
