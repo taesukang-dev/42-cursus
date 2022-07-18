@@ -69,6 +69,7 @@ void	init_args(t_args *args, int ac, char *av[])
 		pthread_mutex_init(&(args->fork[i]), NULL);
 		i++;
 	}
+	pthread_mutex_init(&(args->print), NULL);
 	args->die_time = my_atoi(av[2]);
 	args->eat_time = my_atoi(av[3]);
 	args->sleep_time = my_atoi(av[4]);

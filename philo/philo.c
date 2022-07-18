@@ -12,6 +12,31 @@
 
 #include "philo.h"
 
+void check_finish(t_philo *philo)
+{
+	int i;
+
+	while(!philo->args->finish)
+	{
+		if (philo->eat_cnt != 0 && philo->eat_cnt == philo->args->eat_cnt)
+		{
+			philo->args->finish = 1;
+			break ;
+		}
+		i = 0;
+		while(i < philo->args->philo_cnt)
+		{
+			if (get_time() - philo[i].eat_time >= philo->args->die_time)
+			{
+				printer(philo, i, "is died");
+				philo->args->finish = 1;
+				break ;
+			}
+			i++;
+		}
+	}
+}
+
 void	start_processing(t_philo *philo, t_args *args)
 {
 	int	i;
@@ -27,9 +52,10 @@ void	start_processing(t_philo *philo, t_args *args)
 		else
 			res = pthread_create(&(philo[i].p_thread), \
 				NULL, routine, &philo[i]);
-		usleep(200);
+		usleep(20);
 		i++;
 	}
+	check_finish(philo);
 	i = 0;
 	while (i < args->philo_cnt)
 	{
@@ -50,6 +76,7 @@ void	all_free(pthread_mutex_t *fork, t_philo *philo)
 	}
 	free(fork);
 	free(philo);
+	pthread_mutex_destroy(&(philo->args->print));
 }
 
 int	main(int ac, char *av[])

@@ -5,6 +5,7 @@ LIBFT = libft
 SRCS = philo.c \
 		philo_utils.c \
 		routine.c \
+		status.c \
 
 OBJS = $(SRCS:.c=.o)
 

@@ -24,6 +24,7 @@ typedef struct s_args
 {
 	int				philo_cnt;
 	pthread_mutex_t	*fork;
+	pthread_mutex_t	print;
 	int				eat_time;
 	int				die_time;
 	int				sleep_time;
@@ -55,7 +56,11 @@ void	*routine_odd(void *data);
 
 void	eat(t_philo *philo);
 void	eat_odd(t_philo *philo);
+void	sleeping(t_philo *philo);
+void	think(t_philo *philo);
 
 void time_spend(long wait_time, t_args *args);
+
+void printer(t_philo *philo, int id, char *msg);
 
 #endif
