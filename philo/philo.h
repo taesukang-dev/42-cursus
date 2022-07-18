@@ -28,6 +28,7 @@ typedef struct s_args
 	int				die_time;
 	int				sleep_time;
 	int				eat_cnt;
+	int				finish;
 }	t_args;
 
 typedef struct s_philo
@@ -54,5 +55,7 @@ void	*routine_odd(void *data);
 
 void	eat(t_philo *philo);
 void	eat_odd(t_philo *philo);
+
+void time_spend(long wait_time, t_args *args);
 
 #endif

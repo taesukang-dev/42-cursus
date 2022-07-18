@@ -15,14 +15,18 @@
 void	start_processing(t_philo *philo, t_args *args)
 {
 	int	i;
+	int	res;
 
 	i = 0;
+	res = 0;
 	while (i < args->philo_cnt)
 	{
 		if (i % 2)
-			pthread_create(&(philo[i].p_thread), NULL, routine_odd, &philo[i]);
+			res = pthread_create(&(philo[i].p_thread), \
+				NULL, routine_odd, &philo[i]);
 		else
-			pthread_create(&(philo[i].p_thread), NULL, routine, &philo[i]);
+			res = pthread_create(&(philo[i].p_thread), \
+				NULL, routine, &philo[i]);
 		usleep(200);
 		i++;
 	}

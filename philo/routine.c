@@ -12,6 +12,21 @@
 
 #include "philo.h"
 
+void time_spend(long wait_time, t_args *args)
+{
+	long start;
+	long now;
+
+	start = get_time();
+	while(!(args->finish))
+	{
+		now = get_time();
+		if ((now - start) >= wait_time)
+			break ;
+		usleep(10);
+	}
+}
+
 void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(&(philo->args->fork[philo->left]));
@@ -23,9 +38,9 @@ void	eat(t_philo *philo)
 		printf("%ld %d has taken a fork\n", \
 			get_time() - philo->start_time, philo->id);
 		printf("%ld %d is eating\n", get_time() - philo->start_time, philo->id);
-		usleep(philo->args->eat_time);
 		philo->eat_time = get_time();
 		philo->eat_cnt += 1;
+		time_spend(philo->args->eat_time, philo->args);
 		pthread_mutex_unlock(&(philo->args->fork[philo->right]));
 	}
 	pthread_mutex_unlock(&(philo->args->fork[philo->left]));
@@ -42,13 +57,13 @@ void	eat_odd(t_philo *philo)
 		printf("%ld %d has taken a fork\n", \
 			get_time() - philo->start_time, philo->id);
 		printf("%ld %d is eating\n", get_time() - philo->start_time, philo->id);
-		usleep(philo->args->eat_time);
 		philo->eat_time = get_time();
 		philo->eat_cnt += 1;
+		time_spend(philo->args->eat_time, philo->args);
 		pthread_mutex_unlock(&(philo->args->fork[philo->left]));
 	}
 	pthread_mutex_unlock(&(philo->args->fork[philo->right]));
-}
+}	
 
 void	*routine(void *data)
 {
@@ -57,16 +72,21 @@ void	*routine(void *data)
 	philo = (t_philo *)data;
 	philo->eat_time = get_time();
 	philo->start_time = get_time();
-	while (1)
+	while (!philo->args->finish)
 	{
 		if (get_time() - philo->eat_time >= philo->args->die_time)
+		{
+			printf("%ld %d is died\n", \
+				get_time() - philo->start_time, philo->id);
+			philo->args->finish = 1;
 			break ;
+		}
 		if (philo->eat_cnt != 0 && philo->eat_cnt == philo->args->eat_cnt)
 			break ;
 		eat(philo);
 		printf("%ld %d is sleeping\n", \
 			get_time() - philo->start_time, philo->id);
-		usleep(philo->args->sleep_time);
+		time_spend(philo->args->sleep_time, philo->args);
 		printf("%ld %d is thinking\n", \
 			get_time() - philo->start_time, philo->id);
 	}
@@ -80,16 +100,21 @@ void	*routine_odd(void *data)
 	philo = (t_philo *)data;
 	philo->eat_time = get_time();
 	philo->start_time = get_time();
-	while (1)
+	while (!philo->args->finish)
 	{
 		if (get_time() - philo->eat_time >= philo->args->die_time)
+		{
+			printf("%ld %d is died\n", \
+				get_time() - philo->start_time, philo->id);
+			philo->args->finish = 1;
 			break ;
+		}
 		if (philo->eat_cnt != 0 && philo->eat_cnt == philo->args->eat_cnt)
 			break ;
 		eat_odd(philo);
 		printf("%ld %d is sleeping\n", \
 			get_time() - philo->start_time, philo->id);
-		usleep(philo->args->sleep_time);
+		time_spend(philo->args->sleep_time, philo->args);
 		printf("%ld %d is thinking\n", \
 			get_time() - philo->start_time, philo->id);
 	}

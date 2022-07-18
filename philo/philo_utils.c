@@ -61,6 +61,8 @@ void	init_args(t_args *args, int ac, char *av[])
 	memset(args, 0, sizeof(t_args));
 	args->philo_cnt = my_atoi(av[1]);
 	args->fork = malloc(sizeof(pthread_mutex_t) * (args->philo_cnt));
+	if (!args->fork)
+		exit_trap(1);
 	i = 0;
 	while (i < args->philo_cnt)
 	{
@@ -72,6 +74,7 @@ void	init_args(t_args *args, int ac, char *av[])
 	args->sleep_time = my_atoi(av[4]);
 	if (ac == 6)
 		args->eat_cnt = my_atoi(av[5]);
+	args->finish = 0;
 }
 
 void	init_philo(t_philo **philo, t_args *args)
@@ -81,6 +84,8 @@ void	init_philo(t_philo **philo, t_args *args)
 
 	num_phil = args->philo_cnt;
 	*philo = malloc(sizeof(t_philo) * args->philo_cnt);
+	if (!*philo)
+		exit_trap(1);
 	i = 0;
 	while (i < num_phil)
 	{
