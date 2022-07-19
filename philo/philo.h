@@ -54,7 +54,7 @@ int				my_atoi(const char *str);
 
 void			*routine(void *data);
 
-void 			eat(t_philo *philo);
+void			eat(t_philo *philo);
 void			sleeping(t_philo *philo);
 void			think(t_philo *philo);
 
