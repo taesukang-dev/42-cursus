@@ -34,6 +34,7 @@ void	check_finish(t_philo *philo)
 				break ;
 			}
 			i++;
+			usleep(100);
 		}
 		usleep(100);
 	}
