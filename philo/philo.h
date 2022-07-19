@@ -30,6 +30,7 @@ typedef struct s_args
 	int				sleep_time;
 	int				eat_cnt;
 	int				finish;
+	int				finished_eat_cnt;
 }	t_args;
 
 typedef struct s_philo
@@ -42,6 +43,7 @@ typedef struct s_philo
 	int			right;
 	long		eat_time;
 	int			eat_cnt;
+	int			finished_eat;
 }	t_philo;
 
 void	init_philo(t_philo **philo, t_args *args);

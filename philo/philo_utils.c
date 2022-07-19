@@ -78,6 +78,7 @@ void	init_args(t_args *args, int ac, char *av[])
 	if (ac == 6)
 		args->eat_cnt = my_atoi(av[5]);
 	args->finish = 0;
+	args->finished_eat_cnt = 0;
 }
 
 void	init_philo(t_philo **philo, t_args *args)
@@ -98,6 +99,7 @@ void	init_philo(t_philo **philo, t_args *args)
 		(*philo)[i].right = (i + 1) % num_phil;
 		(*philo)[i].eat_time = 0;
 		(*philo)[i].eat_cnt = 0;
+		(*philo)[i].finished_eat = 0;
 		i++;
 	}
 }

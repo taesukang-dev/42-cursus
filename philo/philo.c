@@ -18,7 +18,8 @@ void	check_finish(t_philo *philo)
 
 	while (!philo->args->finish)
 	{
-		if (philo->eat_cnt != 0 && philo->eat_cnt == philo->args->eat_cnt)
+		if (philo->args->eat_cnt && \
+			philo->args->finished_eat_cnt == philo->args->philo_cnt)
 		{
 			philo->args->finish = 1;
 			break ;

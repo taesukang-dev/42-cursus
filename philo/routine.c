@@ -48,6 +48,13 @@ void	*routine(void *data)
 		usleep(500);
 	while (!philo->args->finish)
 	{
+		if (philo->args->eat_cnt && \
+			!philo->finished_eat && philo->eat_cnt == philo->args->eat_cnt)
+		{
+			philo->finished_eat = 1;
+			philo->args->finished_eat_cnt += 1;
+			break ;
+		}
 		eat(philo);
 		sleeping(philo);
 		think(philo);
