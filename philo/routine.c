@@ -42,22 +42,10 @@ void	*routine(void *data)
 	philo = (t_philo *)data;
 	philo->eat_time = get_time();
 	philo->start_time = get_time();
-	while (!philo->args->finish)
-	{
-		eat(philo);
-		sleeping(philo);
-		think(philo);
-	}
-	return (0);
-}
-
-void	*routine_odd(void *data)
-{
-	t_philo	*philo;
-
-	philo = (t_philo *)data;
-	philo->eat_time = get_time();
-	philo->start_time = get_time();
+	if (philo->id % 2)
+		usleep(1000);
+	else
+		usleep(500);
 	while (!philo->args->finish)
 	{
 		eat(philo);

@@ -46,12 +46,8 @@ void	start_processing(t_philo *philo, t_args *args)
 	res = 0;
 	while (i < args->philo_cnt)
 	{
-		if (i % 2)
-			res = pthread_create(&(philo[i].p_thread), \
-				NULL, routine_odd, &philo[i]);
-		else
-			res = pthread_create(&(philo[i].p_thread), \
-				NULL, routine, &philo[i]);
+		res = pthread_create(&(philo[i].p_thread), \
+			NULL, routine, &philo[i]);
 		if (res)
 			exit_trap(1);
 		usleep(200);
