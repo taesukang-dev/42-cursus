@@ -66,10 +66,12 @@ void	init_args(t_args *args, int ac, char *av[])
 	i = 0;
 	while (i < args->philo_cnt)
 	{
-		pthread_mutex_init(&(args->fork[i]), NULL);
+		if (pthread_mutex_init(&(args->fork[i]), NULL))
+			exit_trap(1);
 		i++;
 	}
-	pthread_mutex_init(&(args->print), NULL);
+	if (pthread_mutex_init(&(args->print), NULL))
+		exit_trap(1);
 	args->die_time = my_atoi(av[2]);
 	args->eat_time = my_atoi(av[3]);
 	args->sleep_time = my_atoi(av[4]);
