@@ -26,7 +26,7 @@ typedef struct s_args
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	print;
 	int				eat_time;
-	int				die_time;
+	unsigned long	die_time;
 	int				sleep_time;
 	int				eat_cnt;
 	int				finish;
@@ -35,34 +35,31 @@ typedef struct s_args
 
 typedef struct s_philo
 {
-	t_args		*args;
-	pthread_t	p_thread;
-	long		start_time;
-	int			id;
-	int			left;
-	int			right;
-	long		eat_time;
-	int			eat_cnt;
-	int			finished_eat;
+	t_args			*args;
+	pthread_t		p_thread;
+	unsigned long	start_time;
+	int				id;
+	int				left;
+	int				right;
+	unsigned long	eat_time;
+	int				eat_cnt;
 }	t_philo;
 
-void	init_philo(t_philo **philo, t_args *args);
-void	init_args(t_args *args, int ac, char *av[]);
+void			init_philo(t_philo **philo, t_args *args);
+void			init_args(t_args *args, int ac, char *av[]);
 
-long	get_time(void);
-void	exit_trap(int sig);
-int		my_atoi(const char *str);
+unsigned long	get_time(void);
+void			exit_trap(int sig);
+int				my_atoi(const char *str);
 
-void	*routine(void *data);
-void	*routine_odd(void *data);
+void			*routine(void *data);
 
-void	eat(t_philo *philo);
-void	eat_odd(t_philo *philo);
-void	sleeping(t_philo *philo);
-void	think(t_philo *philo);
+void 			eat(t_philo *philo);
+void			sleeping(t_philo *philo);
+void			think(t_philo *philo);
 
-void	time_spend(long wait_time, t_args *args);
+void			time_spend(unsigned long wait_time, t_args *args);
 
-void	printer(t_philo *philo, int id, char *msg);
+void			printer(t_philo *philo, int id, char *msg);
 
 #endif

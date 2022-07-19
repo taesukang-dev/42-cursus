@@ -44,7 +44,7 @@
 			struct timeval mytime;
 			
 			gettimeofday(&mytime, NULL);
-			long mls = mytime.tv_sec * 1000 + mytime.tv_usec / 1000;
+			unsigned long mls = mytime.tv_sec * 1000 + mytime.tv_usec / 1000;
 			printf("%ld", mls);
 			```
 

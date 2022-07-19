@@ -35,6 +35,7 @@ void	check_finish(t_philo *philo)
 			}
 			i++;
 		}
+		usleep(100);
 	}
 }
 
@@ -51,7 +52,7 @@ void	start_processing(t_philo *philo, t_args *args)
 			NULL, routine, &philo[i]);
 		if (res)
 			exit_trap(1);
-		usleep(200);
+		usleep(100);
 		i++;
 	}
 	check_finish(philo);

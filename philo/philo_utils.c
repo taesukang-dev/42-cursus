@@ -20,9 +20,9 @@ void	exit_trap(int sig)
 
 int	my_atoi(const char *str)
 {
-	size_t	i;
-	long	result;
-	long	op;
+	size_t			i;
+	unsigned long	result;
+	unsigned long	op;
 
 	i = 0;
 	result = 0;
@@ -37,8 +37,7 @@ int	my_atoi(const char *str)
 	{
 		result = (result * 10) + (str[i] - '0');
 		i++;
-		if ((result > 2147483647 && op == 1) \
-			|| (result > 2147483648 && op == -1))
+		if ((result > 2147483647 && op == 1))
 			exit_trap(1);
 	}
 	if (str[i])
@@ -46,7 +45,7 @@ int	my_atoi(const char *str)
 	return (result * op);
 }
 
-long	get_time(void)
+unsigned long	get_time(void)
 {
 	struct timeval	now;
 
@@ -99,7 +98,6 @@ void	init_philo(t_philo **philo, t_args *args)
 		(*philo)[i].right = (i + 1) % num_phil;
 		(*philo)[i].eat_time = 0;
 		(*philo)[i].eat_cnt = 0;
-		(*philo)[i].finished_eat = 0;
 		i++;
 	}
 }

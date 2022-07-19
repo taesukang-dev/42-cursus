@@ -24,6 +24,8 @@ void	eat(t_philo *philo)
 		time_spend(philo->args->eat_time, philo->args);
 		philo->eat_time = get_time();
 		philo->eat_cnt += 1;
+		if (philo->eat_cnt == philo->args->eat_cnt)
+			philo->args->finished_eat_cnt += 1;
 		pthread_mutex_unlock(&(philo->args->fork[philo->right]));
 	}
 	pthread_mutex_unlock(&(philo->args->fork[philo->left]));
