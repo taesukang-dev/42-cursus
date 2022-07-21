@@ -10,4 +10,4 @@ yup, I'm a cadet @42seoul
 |   2    |         <a href="https://github.com/mtae616/42_cursus/tree/master/pipex">pipex</a>         |    C     | Linux pipe, redirection, <br /> multiprocessing, <br /> blocking vs nonblocking vs async |     22. 06. 03     |
 |   2    |     <a href="https://github.com/mtae616/42_cursus/tree/master/push_swap">push_swap</a>     |    C     |                             Algorithms <br /> Data Structure                             |     22. 07. 02     |
 |   2    |                                        Exam Rank 02                                        |    C     |                                      get_next_line                                       |     22. 07. 05     |
-| 2 | <a href="https://github.com/mtae616/42_cursus/tree/master/philo">philo</a> | C | Synchronization <br /> multi threading <br /> etc... | 22. 07. 21 | 
+| 3 | <a href="https://github.com/mtae616/42_cursus/tree/master/philo">philo</a> | C | Synchronization <br /> multi threading <br /> etc... | 22. 07. 21 | 
