@@ -6,7 +6,7 @@
 - <a href="https://liltdevs.tistory.com/83">Process Synchronization</a>
 - <a href="https://liltdevs.tistory.com/84">mutex</a>
 - <a href="https://liltdevs.tistory.com/88">deadlock</a>
-- <a href="./subject">과제 전문</a>
+- <a href="./subject.md">과제 전문</a>
 - cf) Consumer-Producer Problem, Readers-Writers Problem
 
 <br />
